@@ -4,9 +4,14 @@ export default async function TasksPage() {
 
   const tasks = await prisma.task.findMany({
     include: {
-      requirement: true,
-      company: true
-    }
+      assignedCompliance: {
+        include: {
+          compliance: true,
+          company: true,
+        },
+      },
+    },
+    orderBy: { dueDate: "asc" },
   })
 
   return (
@@ -16,31 +21,45 @@ export default async function TasksPage() {
         Compliance Tasks
       </h1>
 
-      <table className="border w-full">
+      <table className="border w-full text-sm">
 
-        <thead>
+        <thead className="bg-muted/40">
           <tr>
-            <th className="p-2">Task</th>
-            <th className="p-2">Company</th>
-            <th className="p-2">Requirement</th>
-            <th className="p-2">Status</th>
+            <th className="p-2 text-left">Compliance</th>
+            <th className="p-2 text-left">Company</th>
+            <th className="p-2 text-left">Due Date</th>
+            <th className="p-2 text-left">Status</th>
+            <th className="p-2 text-left">Remarks</th>
           </tr>
         </thead>
 
         <tbody>
-          {tasks.map(task => (
-            <tr key={task.id} className="border">
+          {tasks.map((task) => (
+            <tr key={task.id} className="border-t">
 
-              <td className="p-2">{task.title}</td>
+              <td className="p-2">{task.assignedCompliance.compliance.title}</td>
 
-              <td className="p-2">{task.company.name}</td>
+              <td className="p-2">{task.assignedCompliance.company.name}</td>
 
-              <td className="p-2">{task.requirement.description}</td>
+              <td className="p-2">
+                {task.dueDate
+                  ? new Date(task.dueDate).toLocaleDateString()
+                  : "—"}
+              </td>
 
-              <td className="p-2">{task.status}</td>
+              <td className="p-2 capitalize">{task.status}</td>
+
+              <td className="p-2">{task.remarks || ""}</td>
 
             </tr>
           ))}
+          {tasks.length === 0 && (
+            <tr>
+              <td colSpan={5} className="p-4 text-center text-muted-foreground">
+                No tasks yet.
+              </td>
+            </tr>
+          )}
         </tbody>
 
       </table>

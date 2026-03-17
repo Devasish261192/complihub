@@ -24,7 +24,7 @@ export default async function Navbar() {
           <span>Compliance Portal</span>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
+        <nav className="hidden items-center gap-6 text-lg font-medium md:flex">
           <Link href="/#features" className="hover:text-primary transition-colors">
             Features
           </Link>
@@ -37,7 +37,7 @@ export default async function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href={redirectPathForRole(session.role)}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               Dashboard
             </Link>
@@ -51,7 +51,7 @@ export default async function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href="/login"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               Login
             </Link>

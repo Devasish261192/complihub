@@ -25,13 +25,15 @@ export function middleware(req: NextRequest) {
   const isCompanyProtected =
     pathname.startsWith("/dashboard") ||
     pathname.startsWith("/frameworks") ||
-    pathname.startsWith("/tasks")
+    pathname.startsWith("/tasks") ||
+    pathname.startsWith("/company")
 
-  // allow static assets
+  // allow static assets and APIs
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/favicon.ico") ||
-    pathname.startsWith("/storage")
+    pathname.startsWith("/storage") ||
+    pathname.startsWith("/api")
   ) {
     return NextResponse.next()
   }
