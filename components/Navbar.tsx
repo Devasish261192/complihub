@@ -1,7 +1,18 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { getSessionFromCookies, clearSessionCookie, redirectPathForRole } from "@/lib/auth"
+import { redirect } from "next/navigation"
 
-export default function Navbar() {
+export default async function Navbar() {
+
+  const session = await getSessionFromCookies()
+
+  async function logoutAction() {
+    "use server"
+    await clearSessionCookie()
+    redirect("/")
+  }
+
   return (
     <div className="border-b bg-card/60 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
@@ -22,19 +33,35 @@ export default function Navbar() {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-3">
-          <Link
-            href="/login"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Login
-          </Link>
-          <Button size="lg" className="hidden sm:inline-flex" asChild>
-            <Link href="#book-demo">
-              Book a Demo
+        {session ? (
+          <div className="flex items-center gap-3">
+            <Link
+              href={redirectPathForRole(session.role)}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Dashboard
             </Link>
-          </Button>
-        </div>
+            <form action={logoutAction}>
+              <Button variant="outline" size="lg" type="submit">
+                Logout
+              </Button>
+            </form>
+          </div>
+        ) : (
+          <div className="flex items-center gap-3">
+            <Link
+              href="/login"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Login
+            </Link>
+            <Button size="lg" className="hidden sm:inline-flex" asChild>
+              <Link href="#book-demo">
+                Book a Demo
+              </Link>
+            </Button>
+          </div>
+        )}
 
       </div>
     </div>
