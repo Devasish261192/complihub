@@ -21,8 +21,9 @@ async function uploadAction(formData: FormData) {
   redirect("/admin/upload?success=1")
 }
 
-export default function UploadPage({ searchParams }: { searchParams?: { success?: string } }) {
-  const success = searchParams?.success
+export default async function UploadPage({ searchParams }: { searchParams: Promise<{ success?: string }> }) {
+  const params = await searchParams
+  const success = params?.success
 
   return (
     <div className="mx-auto max-w-xl p-8 space-y-6">
@@ -37,7 +38,7 @@ export default function UploadPage({ searchParams }: { searchParams?: { success?
         </div>
       )}
 
-      <form action={uploadAction} className="space-y-4" encType="multipart/form-data">
+      <form action={uploadAction} className="space-y-4">
         <input type="file" name="file" accept="application/json" className="w-full" required />
         <Button type="submit" size="lg">Upload</Button>
       </form>

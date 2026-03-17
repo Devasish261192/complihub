@@ -7,8 +7,9 @@ type SearchParams = {
   error?: string
 }
 
-export default function LoginPage({ searchParams }: { searchParams?: SearchParams }) {
-  const errorMessage = searchParams?.error
+export default async function LoginPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
+  const params = await searchParams
+  const errorMessage = params?.error
 
   async function loginAction(formData: FormData) {
     "use server"

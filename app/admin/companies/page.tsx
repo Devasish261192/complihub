@@ -1,4 +1,4 @@
-import Link from "next/link"
+ï»¿import Link from "next/link"
 import prisma from "@/lib/prisma"
 import { Button } from "@/components/ui/button"
 
@@ -34,9 +34,9 @@ export default async function AdminCompaniesPage() {
             {companies.map((company) => (
               <tr key={company.id} className="border-t">
                 <td className="px-3 py-2 font-medium">{company.name}</td>
-                <td className="px-3 py-2">{company.industry || "—"}</td>
-                <td className="px-3 py-2">{company.type || "—"}</td>
-                <td className="px-3 py-2">{company.employeeCount ?? "—"}</td>
+                <td className="px-3 py-2">{company.industry || "â€”"}</td>
+                <td className="px-3 py-2">{company.type || "â€”"}</td>
+                <td className="px-3 py-2">{company.employeeCount ?? "â€”"}</td>
                 <td className="px-3 py-2">
                   <Link href={`/admin/companies/${company.id}`} className="text-primary hover:underline">
                     View
