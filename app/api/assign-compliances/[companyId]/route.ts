@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server"
+﻿import { NextResponse } from "next/server"
 import { assignCompliances } from "@/lib/complianceEngine"
 import { getSessionFromCookies } from "@/lib/auth"
 
