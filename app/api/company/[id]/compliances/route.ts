@@ -16,7 +16,8 @@ function nextDueDate(frequency: string) {
   }
 }
 
-export async function GET(_request: Request, { params }: { params: { id: string } }) {
+export async function GET(request: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const session = await getSessionFromCookies()
   if (!session) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
@@ -37,7 +38,8 @@ export async function GET(_request: Request, { params }: { params: { id: string 
   return NextResponse.json(assigned)
 }
 
-export async function POST(request: Request, { params }: { params: { id: string } }) {
+export async function POST(request: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const session = await getSessionFromCookies()
   if (!session || session.role !== "ADMIN") {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 })

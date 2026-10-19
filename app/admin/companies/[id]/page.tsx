@@ -27,7 +27,8 @@ async function addCompliance(formData: FormData) {
   redirect(`/admin/companies/${companyId}`)
 }
 
-export default async function CompanyDetailPage({ params }: { params: { id: string } }) {
+export default async function CompanyDetailPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const company = await prisma.company.findUnique({ where: { id: params.id } })
   if (!company) return <div className="p-8">Company not found</div>
 
@@ -59,9 +60,9 @@ export default async function CompanyDetailPage({ params }: { params: { id: stri
           <h2 className="font-semibold mb-2">Company Info</h2>
           <div className="text-sm space-y-1">
             <div><span className="font-medium">Name:</span> {company.name}</div>
-            <div><span className="font-medium">Industry:</span> {company.industry || "—"}</div>
-            <div><span className="font-medium">Type:</span> {company.type || "—"}</div>
-            <div><span className="font-medium">Employees:</span> {company.employeeCount ?? "—"}</div>
+            <div><span className="font-medium">Industry:</span> {company.industry || ""}</div>
+            <div><span className="font-medium">Type:</span> {company.type || ""}</div>
+            <div><span className="font-medium">Employees:</span> {company.employeeCount ?? ""}</div>
           </div>
         </div>
 
@@ -109,8 +110,8 @@ export default async function CompanyDetailPage({ params }: { params: { id: stri
                     <td className="px-3 py-2 font-medium">{item.compliance.title}</td>
                     <td className="px-3 py-2">{item.compliance.category?.name}</td>
                     <td className="px-3 py-2 capitalize">{item.status}</td>
-                    <td className="px-3 py-2">{firstTask?.dueDate ? new Date(firstTask.dueDate).toLocaleDateString() : "—"}</td>
-                    <td className="px-3 py-2 capitalize">{firstTask?.status || "—"}</td>
+                    <td className="px-3 py-2">{firstTask?.dueDate ? new Date(firstTask.dueDate).toLocaleDateString() : ""}</td>
+                    <td className="px-3 py-2 capitalize">{firstTask?.status || ""}</td>
                     <td className="px-3 py-2">
                       <form action={() => toggleAssigned(item.id, company.id)}>
                         <Button type="submit" variant="outline" size="sm">

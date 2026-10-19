@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma"
 
-export default async function ComplianceDetailPage({ params }: { params: { id: string } }) {
+export default async function ComplianceDetailPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
 
   const compliance = await prisma.compliance.findUnique({
     where: { id: params.id },

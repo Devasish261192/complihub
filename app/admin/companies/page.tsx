@@ -27,6 +27,7 @@ export default async function AdminCompaniesPage() {
               <th className="px-3 py-2 text-left">Industry</th>
               <th className="px-3 py-2 text-left">Type</th>
               <th className="px-3 py-2 text-left">Employees</th>
+              <th className="px-3 py-2 text-left">State</th>
               <th className="px-3 py-2 text-left">Actions</th>
             </tr>
           </thead>
@@ -37,6 +38,7 @@ export default async function AdminCompaniesPage() {
                 <td className="px-3 py-2">{company.industry || "—"}</td>
                 <td className="px-3 py-2">{company.type || "—"}</td>
                 <td className="px-3 py-2">{company.employeeCount ?? "—"}</td>
+                <td className="px-3 py-2">{company.state || "—"}</td>
                 <td className="px-3 py-2">
                   <Link href={`/admin/companies/${company.id}`} className="text-primary hover:underline">
                     View
@@ -46,8 +48,8 @@ export default async function AdminCompaniesPage() {
             ))}
             {companies.length === 0 && (
               <tr>
-                <td colSpan={5} className="px-3 py-4 text-center text-muted-foreground">
-                  No companies yet.
+                <td colSpan={6} className="px-3 py-4 text-center text-muted-foreground">
+                  No companies found. Create your first company.
                 </td>
               </tr>
             )}

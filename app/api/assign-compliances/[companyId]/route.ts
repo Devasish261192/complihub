@@ -2,7 +2,8 @@ import { NextResponse } from "next/server"
 import { assignCompliances } from "@/lib/complianceEngine"
 import { getSessionFromCookies } from "@/lib/auth"
 
-export async function POST(_request: Request, { params }: { params: { companyId: string } }) {
+export async function POST(_request: Request, props: { params: Promise<{ companyId: string }> }) {
+  const params = await props.params;
   const session = await getSessionFromCookies()
   if (!session || session.role !== "ADMIN") {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 })

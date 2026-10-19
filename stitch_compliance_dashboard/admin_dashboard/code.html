@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sovereign Ledger | Admin Console</title>
+<!-- Google Fonts: Manrope & Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#d7e5eb",
+              "background": "#f7fafc",
+              "inverse-on-surface": "#9a9d9f",
+              "on-surface": "#283439",
+              "surface-dim": "#ccdde4",
+              "secondary-container": "#d8e3fa",
+              "inverse-primary": "#b3cdfd",
+              "error-container": "#fe8983",
+              "on-primary-fixed": "#254067",
+              "primary-dim": "#39537c",
+              "on-secondary-fixed-variant": "#515c6f",
+              "on-primary-fixed-variant": "#425c85",
+              "tertiary-fixed-dim": "#d5cdee",
+              "secondary-fixed-dim": "#cad5ec",
+              "surface-container-high": "#dfeaef",
+              "primary-container": "#d6e3ff",
+              "tertiary": "#615b77",
+              "primary": "#455f88",
+              "on-secondary-container": "#475265",
+              "primary-fixed": "#d6e3ff",
+              "on-tertiary": "#fcf7ff",
+              "surface-container-low": "#eff4f7",
+              "tertiary-fixed": "#e3dbfd",
+              "surface-tint": "#455f88",
+              "primary-fixed-dim": "#bfd5ff",
+              "on-tertiary-container": "#524c68",
+              "secondary": "#546073",
+              "on-secondary": "#f8f8ff",
+              "error-dim": "#4e0309",
+              "on-tertiary-fixed-variant": "#5c5672",
+              "on-error": "#fff7f6",
+              "error": "#9f403d",
+              "outline-variant": "#a7b4ba",
+              "tertiary-dim": "#554f6b",
+              "surface-container-lowest": "#ffffff",
+              "surface-bright": "#f7fafc",
+              "on-primary": "#f6f7ff",
+              "surface": "#f7fafc",
+              "on-secondary-fixed": "#354052",
+              "secondary-dim": "#495467",
+              "inverse-surface": "#0b0f10",
+              "on-background": "#283439",
+              "tertiary-container": "#e3dbfd",
+              "on-primary-container": "#38527b",
+              "outline": "#707d82",
+              "on-error-container": "#752121",
+              "surface-container-highest": "#d7e5eb",
+              "surface-container": "#e7eff3",
+              "secondary-fixed": "#d8e3fa",
+              "on-surface-variant": "#546166",
+              "on-tertiary-fixed": "#3f3a54"
+            },
+            fontFamily: {
+              "headline": ["Manrope", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Manrope', sans-serif; }
+        .glass-header {
+            background: rgba(247, 250, 252, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #455f88 0%, #39537c 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 flex flex-col h-full py-8 px-6 h-screen w-72 bg-[#eff4f7] dark:bg-slate-900 border-none font-['Manrope'] antialiased tracking-tight z-40">
+<div class="mb-10 px-2">
+<h1 class="text-xl font-bold text-[#455f88] dark:text-blue-400 tracking-tight">Sovereign Ledger</h1>
+<p class="text-xs text-secondary opacity-70 mt-1">Admin Console</p>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Active Tab: Client Monitoring -->
+<a class="flex items-center gap-3 px-4 py-3 rounded text-[#455f88] dark:text-blue-300 font-bold border-r-4 border-[#455f88] bg-[#e7eff3] dark:bg-slate-800/50 transition-colors duration-200 ease-in-out opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="monitor_heart">monitor_heart</span>
+<span>Client Monitoring</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-[#546073] dark:text-slate-400 font-medium hover:bg-[#e7eff3] dark:hover:bg-slate-800/30 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="domain_add">domain_add</span>
+<span>Company Registration</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-[#546073] dark:text-slate-400 font-medium hover:bg-[#e7eff3] dark:hover:bg-slate-800/30 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>User Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-[#546073] dark:text-slate-400 font-medium hover:bg-[#e7eff3] dark:hover:bg-slate-800/30 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span>Billing</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 space-y-2 border-t border-outline-variant/10">
+<a class="flex items-center gap-3 px-4 py-3 rounded text-[#546073] dark:text-slate-400 font-medium hover:bg-[#e7eff3] dark:hover:bg-slate-800/30 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-[#546073] dark:text-slate-400 font-medium hover:bg-[#e7eff3] dark:hover:bg-slate-800/30 transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="help_center">help_center</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- TopAppBar Component -->
+<header class="sticky top-0 z-30 glass-header flex justify-between items-center w-full px-8 py-4 ml-72 max-w-[calc(100%-18rem)] border-none">
+<div class="flex items-center">
+<h2 class="text-on-surface font-headline font-bold text-lg">Dashboard Overview</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="absolute inset-y-0 left-3 flex items-center text-outline">
+<span class="material-symbols-outlined text-xl">search</span>
+</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 text-sm w-64 transition-all" placeholder="Search companies..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-secondary hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-outline-variant/20">
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface leading-none">Admin User</p>
+<p class="text-[10px] text-secondary font-medium tracking-wider uppercase mt-1">Super Admin</p>
+</div>
+<span class="material-symbols-outlined text-3xl text-primary" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-72 p-8 min-h-[calc(100vh-80px)]">
+<!-- Hero Summary Section (Bento Grid Style) -->
+<div class="grid grid-cols-12 gap-6 mb-8">
+<!-- Summary Stats Card -->
+<div class="col-span-12 lg:col-span-8 grid grid-cols-3 gap-6">
+<div class="col-span-1 bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
+<div class="flex items-center justify-between mb-4">
+<span class="w-10 h-10 rounded-lg bg-primary-container/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">domain</span>
+</span>
+<span class="text-xs font-bold text-primary bg-primary-container px-2 py-0.5 rounded-full">+12%</span>
+</div>
+<p class="text-secondary text-xs font-bold uppercase tracking-widest mb-1">Total Entities</p>
+<h3 class="text-2xl font-bold text-on-surface">1,284</h3>
+</div>
+<div class="col-span-1 bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
+<div class="flex items-center justify-between mb-4">
+<span class="w-10 h-10 rounded-lg bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">verified</span>
+</span>
+<span class="text-xs font-bold text-tertiary bg-tertiary-container px-2 py-0.5 rounded-full">Stable</span>
+</div>
+<p class="text-secondary text-xs font-bold uppercase tracking-widest mb-1">Compliant Clients</p>
+<h3 class="text-2xl font-bold text-on-surface">942</h3>
+</div>
+<div class="col-span-1 bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
+<div class="flex items-center justify-between mb-4">
+<span class="w-10 h-10 rounded-lg bg-error-container/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">warning</span>
+</span>
+<span class="text-xs font-bold text-error bg-error-container/40 px-2 py-0.5 rounded-full">High</span>
+</div>
+<p class="text-secondary text-xs font-bold uppercase tracking-widest mb-1">Risk Flagged</p>
+<h3 class="text-2xl font-bold text-on-surface">32</h3>
+</div>
+<!-- Featured Managed Clients Summary -->
+<div class="col-span-3 bg-surface-container-low p-6 rounded-xl relative overflow-hidden group">
+<div class="relative z-10 flex items-center justify-between">
+<div>
+<h4 class="text-lg font-bold text-primary mb-2">Managed Clients Summary</h4>
+<p class="text-secondary text-sm max-w-md leading-relaxed">
+                                Reviewing the collective performance of high-tier SMEs across the Maharashtra and Karnataka regions for Q3 Compliance cycles.
+                            </p>
+</div>
+<button class="primary-gradient text-on-primary px-6 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+                            Generate Report
+                        </button>
+</div>
+<!-- Subtle background decoration -->
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-700">
+<span class="material-symbols-outlined text-[160px]">analytics</span>
+</div>
+</div>
+</div>
+<!-- Compliance Score Radial Visualizer -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 flex flex-col items-center justify-center relative">
+<h4 class="text-sm font-bold text-secondary uppercase tracking-widest mb-6 w-full text-left">Aggregated Score</h4>
+<div class="relative w-48 h-48 flex items-center justify-center">
+<!-- Pseudo-donut chart using SVG -->
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-dasharray="502.6" stroke-dashoffset="125.6" stroke-width="12"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-4xl font-extrabold text-on-surface">75%</span>
+<span class="text-[10px] font-bold text-secondary uppercase tracking-tighter">Healthy</span>
+</div>
+</div>
+<div class="mt-8 grid grid-cols-2 gap-4 w-full">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-xs font-medium text-on-surface-variant">On-Track</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-surface-container-highest"></span>
+<span class="text-xs font-medium text-on-surface-variant">Pending</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Area: Tables and Grid -->
+<div class="grid grid-cols-12 gap-8">
+<!-- List of Companies Section -->
+<div class="col-span-12 xl:col-span-8">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-xl font-headline font-bold text-on-surface">Service Continuity Monitoring</h3>
+<p class="text-sm text-secondary">Operational tracking of last transaction dates and compliance status.</p>
+</div>
+<button class="text-primary font-bold text-sm flex items-center gap-2 hover:opacity-80">
+                        View Detailed Log
+                        <span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/5">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-6 py-4 text-[11px] font-bold text-secondary uppercase tracking-widest">Company Name</th>
+<th class="px-6 py-4 text-[11px] font-bold text-secondary uppercase tracking-widest">Compliance Score</th>
+<th class="px-6 py-4 text-[11px] font-bold text-secondary uppercase tracking-widest">Last Paid Date</th>
+<th class="px-6 py-4 text-[11px] font-bold text-secondary uppercase tracking-widest text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/5 flex items-center justify-center text-primary font-bold text-xs">TR</div>
+<div>
+<p class="text-sm font-bold text-on-surface leading-none">TechRhythm Solutions</p>
+<p class="text-[10px] text-secondary mt-1">GST-IN: 27AABCT2341D1Z1</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 bg-surface-container-high rounded-full max-w-[80px]">
+<div class="h-full bg-primary rounded-full" style="width: 92%"></div>
+</div>
+<span class="text-xs font-bold text-on-surface">92%</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-medium text-on-surface">Oct 12, 2023</p>
+<p class="text-[10px] text-tertiary font-bold uppercase mt-1">Invoice #0421</p>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-2 text-outline-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-tertiary/5 flex items-center justify-center text-tertiary font-bold text-xs">AM</div>
+<div>
+<p class="text-sm font-bold text-on-surface leading-none">Aura Manufacturing</p>
+<p class="text-[10px] text-secondary mt-1">GST-IN: 29AAYCA9821E2Z4</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 bg-surface-container-high rounded-full max-w-[80px]">
+<div class="h-full bg-error rounded-full" style="width: 45%"></div>
+</div>
+<span class="text-xs font-bold text-error">45%</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-medium text-on-surface">Sep 28, 2023</p>
+<p class="text-[10px] text-error font-bold uppercase mt-1">Renewal Due</p>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-2 text-outline-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-secondary/5 flex items-center justify-center text-secondary font-bold text-xs">BL</div>
+<div>
+<p class="text-sm font-bold text-on-surface leading-none">BlueLeaf Logistics</p>
+<p class="text-[10px] text-secondary mt-1">GST-IN: 19CCBTP1109J1Z2</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 bg-surface-container-high rounded-full max-w-[80px]">
+<div class="h-full bg-primary rounded-full" style="width: 78%"></div>
+</div>
+<span class="text-xs font-bold text-on-surface">78%</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-medium text-on-surface">Oct 15, 2023</p>
+<p class="text-[10px] text-primary font-bold uppercase mt-1">Paid via Portal</p>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-2 text-outline-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/5 flex items-center justify-center text-primary font-bold text-xs">VS</div>
+<div>
+<p class="text-sm font-bold text-on-surface leading-none">Vanguard Systems</p>
+<p class="text-[10px] text-secondary mt-1">GST-IN: 07AADCB4561M1Z1</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 bg-surface-container-high rounded-full max-w-[80px]">
+<div class="h-full bg-primary rounded-full" style="width: 88%"></div>
+</div>
+<span class="text-xs font-bold text-on-surface">88%</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-medium text-on-surface">Oct 01, 2023</p>
+<p class="text-[10px] text-primary font-bold uppercase mt-1">Auto-Renewal</p>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-2 text-outline-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Regional Compliance Breakdown (Pie Charts Representation) -->
+<div class="col-span-12 xl:col-span-4">
+<div class="mb-6">
+<h3 class="text-xl font-headline font-bold text-on-surface">Regional Scores</h3>
+<p class="text-sm text-secondary">Breakdown by operation zones.</p>
+</div>
+<div class="space-y-6">
+<!-- Zone Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/10 flex items-center gap-6">
+<div class="relative w-16 h-16 flex-shrink-0">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-primary" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175.9" stroke-dashoffset="35.2" stroke-width="6"></circle>
+</svg>
+<span class="absolute inset-0 flex items-center justify-center text-[10px] font-bold">80%</span>
+</div>
+<div>
+<h5 class="text-sm font-bold text-on-surface mb-1">West Zone (Maharashtra)</h5>
+<p class="text-[11px] text-secondary leading-tight">412 Active Entities. High continuity in IT sector clusters.</p>
+</div>
+</div>
+<!-- Zone Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/10 flex items-center gap-6">
+<div class="relative w-16 h-16 flex-shrink-0">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-tertiary" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175.9" stroke-dashoffset="70.4" stroke-width="6"></circle>
+</svg>
+<span class="absolute inset-0 flex items-center justify-center text-[10px] font-bold">60%</span>
+</div>
+<div>
+<h5 class="text-sm font-bold text-on-surface mb-1">South Zone (Karnataka)</h5>
+<p class="text-[11px] text-secondary leading-tight">218 Active Entities. Recent filings pending in industrial hubs.</p>
+</div>
+</div>
+<!-- Zone Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/10 flex items-center gap-6">
+<div class="relative w-16 h-16 flex-shrink-0">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-primary-dim" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175.9" stroke-dashoffset="14" stroke-width="6"></circle>
+</svg>
+<span class="absolute inset-0 flex items-center justify-center text-[10px] font-bold">92%</span>
+</div>
+<div>
+<h5 class="text-sm font-bold text-on-surface mb-1">North Zone (NCR)</h5>
+<p class="text-[11px] text-secondary leading-tight">324 Active Entities. Exemplary audit logs for the period.</p>
+</div>
+</div>
+<!-- Quick Action: Registration -->
+<div class="bg-primary/5 border border-primary/10 p-6 rounded-xl flex items-center justify-between group cursor-pointer hover:bg-primary/10 transition-colors">
+<div>
+<h5 class="text-sm font-bold text-primary">New Registration Required?</h5>
+<p class="text-xs text-secondary mt-1">Onboard new client entities seamlessly.</p>
+</div>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="domain_add">domain_add</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Managed Clients Summary Section -->
+<div class="mt-12">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="bar_chart">bar_chart</span>
+<h3 class="text-xl font-headline font-bold text-on-surface">Client Ecosystem Health</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Data Insight 1 -->
+<div class="bg-surface-container rounded-xl p-5 border border-outline-variant/5">
+<p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-3">Continuity Risk</p>
+<div class="flex items-baseline gap-2">
+<h4 class="text-2xl font-bold text-on-surface">4.2%</h4>
+<span class="text-[10px] text-error font-bold flex items-center">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                            0.8%
+                        </span>
+</div>
+<p class="text-[11px] text-secondary mt-2">Entities with service expiration in &lt;15 days.</p>
+</div>
+<!-- Data Insight 2 -->
+<div class="bg-surface-container rounded-xl p-5 border border-outline-variant/5">
+<p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-3">Audit Velocity</p>
+<div class="flex items-baseline gap-2">
+<h4 class="text-2xl font-bold text-on-surface">12.5</h4>
+<span class="text-[10px] text-primary font-bold flex items-center">
+<span class="material-symbols-outlined text-xs">trending_down</span>
+                            2.1
+                        </span>
+</div>
+<p class="text-[11px] text-secondary mt-2">Avg days to resolve compliance flags.</p>
+</div>
+<!-- Data Insight 3 -->
+<div class="bg-surface-container rounded-xl p-5 border border-outline-variant/5">
+<p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-3">Tax Liability Lock</p>
+<div class="flex items-baseline gap-2">
+<h4 class="text-2xl font-bold text-on-surface">₹84.2M</h4>
+<span class="text-[10px] text-primary font-bold">Secured</span>
+</div>
+<p class="text-[11px] text-secondary mt-2">Aggregate credit managed across portfolio.</p>
+</div>
+<!-- Data Insight 4 -->
+<div class="bg-surface-container rounded-xl p-5 border border-outline-variant/5">
+<p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-3">System Uptime</p>
+<div class="flex items-baseline gap-2">
+<h4 class="text-2xl font-bold text-on-surface">99.9%</h4>
+</div>
+<p class="text-[11px] text-secondary mt-2">Real-time sync with MCA and GSTN nodes.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-8 right-8 w-14 h-14 primary-gradient text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+</button>
+</body></html>

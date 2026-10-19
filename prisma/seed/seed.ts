@@ -9,24 +9,23 @@ const adapter = new PrismaPg({
 const prisma = new PrismaClient({ adapter })
 
 async function main() {
-  // Roles
-  const adminRole = await prisma.role.upsert({
-    where: { name: "ADMIN" },
-    update: {},
-    create: { name: "ADMIN" },
-  })
+  // Clear existing data to avoid duplicates if we run seed multiple times without reset
+  await prisma.task.deleteMany()
+  await prisma.assignedCompliance.deleteMany()
+  await prisma.complianceRule.deleteMany()
+  await prisma.compliance.deleteMany()
+  await prisma.complianceCategory.deleteMany()
+  await prisma.user.deleteMany()
+  await prisma.company.deleteMany()
+  await prisma.role.deleteMany()
 
-  const companyAdminRole = await prisma.role.upsert({
-    where: { name: "COMPANY_ADMIN" },
-    update: {},
-    create: { name: "COMPANY_ADMIN" },
-  })
+  // Roles
+  const adminRole = await prisma.role.create({ data: { name: "ADMIN" } })
+  const companyAdminRole = await prisma.role.create({ data: { name: "COMPANY_ADMIN" } })
 
   // Base company
-  const company = await prisma.company.upsert({
-    where: { name: "ABC Pvt Ltd" },
-    update: {},
-    create: {
+  const company = await prisma.company.create({
+    data: {
       name: "ABC Pvt Ltd",
       industry: "IT Services",
       type: "Pvt Ltd",
@@ -37,14 +36,8 @@ async function main() {
   })
 
   // Admin users
-  await prisma.user.upsert({
-    where: { email: "admin@portal.com" },
-    update: {
-      password: "admin123",
-      roleId: adminRole.id,
-      companyId: null,
-    },
-    create: {
+  await prisma.user.create({
+    data: {
       email: "admin@portal.com",
       name: "Admin 1",
       password: "admin123",
@@ -53,14 +46,8 @@ async function main() {
     },
   })
 
-  await prisma.user.upsert({
-    where: { email: "uncle@portal.com" },
-    update: {
-      password: "admin123",
-      roleId: adminRole.id,
-      companyId: null,
-    },
-    create: {
+  await prisma.user.create({
+    data: {
       email: "uncle@portal.com",
       name: "Admin 2",
       password: "admin123",
@@ -70,14 +57,8 @@ async function main() {
   })
 
   // Company admin
-  await prisma.user.upsert({
-    where: { email: "admin@abc.com" },
-    update: {
-      password: "test123",
-      roleId: companyAdminRole.id,
-      companyId: company.id,
-    },
-    create: {
+  await prisma.user.create({
+    data: {
       email: "admin@abc.com",
       name: "ABC Admin",
       password: "test123",
@@ -87,27 +68,13 @@ async function main() {
   })
 
   // Compliance categories
-  const taxCategory = await prisma.complianceCategory.upsert({
-    where: { name: "Tax" },
-    update: {},
-    create: { name: "Tax" },
-  })
-  const labourCategory = await prisma.complianceCategory.upsert({
-    where: { name: "Labour" },
-    update: {},
-    create: { name: "Labour" },
-  })
-  const corporateCategory = await prisma.complianceCategory.upsert({
-    where: { name: "Corporate" },
-    update: {},
-    create: { name: "Corporate" },
-  })
+  const taxCategory = await prisma.complianceCategory.create({ data: { name: "Tax" } })
+  const labourCategory = await prisma.complianceCategory.create({ data: { name: "Labour" } })
+  const corporateCategory = await prisma.complianceCategory.create({ data: { name: "Corporate" } })
 
   // Sample compliances
-  const gstReturn = await prisma.compliance.upsert({
-    where: { title: "GST Return Filing" },
-    update: {},
-    create: {
+  const gstReturn = await prisma.compliance.create({
+    data: {
       title: "GST Return Filing",
       description: "Monthly GST return filing (GSTR-3B / GSTR-1)",
       categoryId: taxCategory.id,
@@ -116,19 +83,15 @@ async function main() {
     },
   })
 
-  await prisma.complianceRule.upsert({
-    where: { complianceId: gstReturn.id },
-    update: {},
-    create: {
+  await prisma.complianceRule.create({
+    data: {
       complianceId: gstReturn.id,
       condition: { turnover: ">0" },
     },
   })
 
-  const epf = await prisma.compliance.upsert({
-    where: { title: "EPF Contribution Filing" },
-    update: {},
-    create: {
+  const epf = await prisma.compliance.create({
+    data: {
       title: "EPF Contribution Filing",
       description: "Monthly EPF challan filing",
       categoryId: labourCategory.id,
@@ -137,19 +100,15 @@ async function main() {
     },
   })
 
-  await prisma.complianceRule.upsert({
-    where: { complianceId: epf.id },
-    update: {},
-    create: {
+  await prisma.complianceRule.create({
+    data: {
       complianceId: epf.id,
       condition: { employeeCount: ">=20" },
     },
   })
 
-  const esi = await prisma.compliance.upsert({
-    where: { title: "ESI Contribution Filing" },
-    update: {},
-    create: {
+  const esi = await prisma.compliance.create({
+    data: {
       title: "ESI Contribution Filing",
       description: "Monthly ESI return",
       categoryId: labourCategory.id,
@@ -158,19 +117,15 @@ async function main() {
     },
   })
 
-  await prisma.complianceRule.upsert({
-    where: { complianceId: esi.id },
-    update: {},
-    create: {
+  await prisma.complianceRule.create({
+    data: {
       complianceId: esi.id,
       condition: { employeeCount: ">=10" },
     },
   })
 
-  const roc = await prisma.compliance.upsert({
-    where: { title: "Annual ROC Filing" },
-    update: {},
-    create: {
+  const roc = await prisma.compliance.create({
+    data: {
       title: "Annual ROC Filing",
       description: "Companies Act annual return filing",
       categoryId: corporateCategory.id,
@@ -179,11 +134,113 @@ async function main() {
     },
   })
 
-  await prisma.complianceRule.upsert({
-    where: { complianceId: roc.id },
-    update: {},
-    create: {
+  await prisma.complianceRule.create({
+    data: {
       complianceId: roc.id,
+      condition: { type: "any" },
+    },
+  })
+
+  // --- New MCA Compliances ---
+
+  const aoc4 = await prisma.compliance.create({
+    data: {
+      title: "Form AOC-4",
+      description: "Filing of Financial Statements with MCA",
+      categoryId: corporateCategory.id,
+      frequency: "yearly",
+      applicableLaw: "Companies Act",
+    },
+  })
+
+  await prisma.complianceRule.create({
+    data: {
+      complianceId: aoc4.id,
+      condition: { type: "any" },
+    },
+  })
+
+  const mgt7 = await prisma.compliance.create({
+    data: {
+      title: "Form MGT-7",
+      description: "Filing of Annual Return with MCA",
+      categoryId: corporateCategory.id,
+      frequency: "yearly",
+      applicableLaw: "Companies Act",
+    },
+  })
+
+  await prisma.complianceRule.create({
+    data: {
+      complianceId: mgt7.id,
+      condition: { type: "any" },
+    },
+  })
+
+  const dir3 = await prisma.compliance.create({
+    data: {
+      title: "Form DIR-3 KYC",
+      description: "Annual KYC of Directors",
+      categoryId: corporateCategory.id,
+      frequency: "yearly",
+      applicableLaw: "Companies Act",
+    },
+  })
+
+  await prisma.complianceRule.create({
+    data: {
+      complianceId: dir3.id,
+      condition: { type: "any" },
+    },
+  })
+
+  const dpt3 = await prisma.compliance.create({
+    data: {
+      title: "Form DPT-3",
+      description: "Return of deposits and particulars of transactions not considered as deposits",
+      categoryId: corporateCategory.id,
+      frequency: "yearly",
+      applicableLaw: "Companies Act",
+    },
+  })
+
+  await prisma.complianceRule.create({
+    data: {
+      complianceId: dpt3.id,
+      condition: { type: "any" },
+    },
+  })
+
+  const adt1 = await prisma.compliance.create({
+    data: {
+      title: "Form ADT-1",
+      description: "Notice to the Registrar by company for appointment of auditor",
+      categoryId: corporateCategory.id,
+      frequency: "yearly",
+      applicableLaw: "Companies Act",
+    },
+  })
+
+  await prisma.complianceRule.create({
+    data: {
+      complianceId: adt1.id,
+      condition: { type: "any" },
+    },
+  })
+
+  const mbp1 = await prisma.compliance.create({
+    data: {
+      title: "Form MBP-1",
+      description: "Notice of interest by director",
+      categoryId: corporateCategory.id,
+      frequency: "yearly",
+      applicableLaw: "Companies Act",
+    },
+  })
+
+  await prisma.complianceRule.create({
+    data: {
+      complianceId: mbp1.id,
       condition: { type: "any" },
     },
   })

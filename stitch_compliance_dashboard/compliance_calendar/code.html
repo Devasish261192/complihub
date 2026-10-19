@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Compliance Calendar | The Sovereign Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-error-container": "#752121",
+                        "background": "#f7fafc",
+                        "surface-bright": "#f7fafc",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#0b0f10",
+                        "tertiary-fixed": "#e3dbfd",
+                        "error-container": "#fe8983",
+                        "primary-dim": "#39537c",
+                        "on-primary-fixed-variant": "#425c85",
+                        "surface-container-low": "#eff4f7",
+                        "tertiary-dim": "#554f6b",
+                        "on-primary-container": "#38527b",
+                        "on-secondary-fixed-variant": "#515c6f",
+                        "on-tertiary-fixed-variant": "#5c5672",
+                        "error": "#9f403d",
+                        "outline": "#707d82",
+                        "tertiary-fixed-dim": "#d5cdee",
+                        "primary-container": "#d6e3ff",
+                        "outline-variant": "#a7b4ba",
+                        "secondary-dim": "#495467",
+                        "secondary-container": "#d8e3fa",
+                        "inverse-primary": "#b3cdfd",
+                        "on-background": "#283439",
+                        "primary": "#455f88",
+                        "surface-dim": "#ccdde4",
+                        "inverse-on-surface": "#9a9d9f",
+                        "error-dim": "#4e0309",
+                        "on-error": "#fff7f6",
+                        "surface-container-high": "#dfeaef",
+                        "on-tertiary-container": "#524c68",
+                        "surface-tint": "#455f88",
+                        "secondary-fixed": "#d8e3fa",
+                        "surface": "#f7fafc",
+                        "tertiary-container": "#e3dbfd",
+                        "surface-container": "#e7eff3",
+                        "on-secondary-container": "#475265",
+                        "on-surface": "#283439",
+                        "on-surface-variant": "#546166",
+                        "secondary": "#546073",
+                        "secondary-fixed-dim": "#cad5ec",
+                        "on-primary": "#f6f7ff",
+                        "surface-container-highest": "#d7e5eb",
+                        "primary-fixed-dim": "#bfd5ff",
+                        "on-secondary-fixed": "#354052",
+                        "primary-fixed": "#d6e3ff",
+                        "on-secondary": "#f8f8ff",
+                        "on-primary-fixed": "#254067",
+                        "on-tertiary-fixed": "#3f3a54",
+                        "on-tertiary": "#fcf7ff",
+                        "tertiary": "#615b77",
+                        "surface-variant": "#d7e5eb"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 z-50 bg-[#eff4f7] dark:bg-[#1a202c] flex flex-col p-4 space-y-2">
+<div class="mb-8 px-2">
+<h1 class="text-xl font-black text-[#455f88] dark:text-[#a3bffa]">Sovereign Ledger</h1>
+<p class="text-xs font-medium text-[#546073] dark:text-[#cbd5e0] opacity-70">Compliance Portal</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-[#546073] dark:text-[#cbd5e0] hover:bg-[#e7eff3]/50 dark:hover:bg-[#2d3748]/50 hover:translate-x-1 transition-transform duration-200 font-['Manrope'] font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-[#e7eff3] dark:bg-[#2d3748] text-[#455f88] dark:text-[#a3bffa] font-bold rounded-lg transition-transform duration-200 font-['Manrope'] text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span>Calendar</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#546073] dark:text-[#cbd5e0] hover:bg-[#e7eff3]/50 dark:hover:bg-[#2d3748]/50 hover:translate-x-1 transition-transform duration-200 font-['Manrope'] font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span>Tasks</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#546073] dark:text-[#cbd5e0] hover:bg-[#e7eff3]/50 dark:hover:bg-[#2d3748]/50 hover:translate-x-1 transition-transform duration-200 font-['Manrope'] font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span>Entity Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#546073] dark:text-[#cbd5e0] hover:bg-[#e7eff3]/50 dark:hover:bg-[#2d3748]/50 hover:translate-x-1 transition-transform duration-200 font-['Manrope'] font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span>Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#546073] dark:text-[#cbd5e0] hover:bg-[#e7eff3]/50 dark:hover:bg-[#2d3748]/50 hover:translate-x-1 transition-transform duration-200 font-['Manrope'] font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="pt-4 border-t border-outline-variant/10 space-y-1">
+<button class="w-full bg-primary text-on-primary py-2.5 rounded-lg font-bold text-sm shadow-sm active:opacity-80 transition-all mb-4">
+                File New Return
+            </button>
+<a class="flex items-center gap-3 px-3 py-2 text-[#546073] hover:translate-x-1 transition-transform text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#546073] hover:translate-x-1 transition-transform text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-64 z-40 bg-[#f7fafc]/80 backdrop-blur-md border-b border-[#a7b4ba]/15 px-6 py-3 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-sm" data-icon="search">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-9 pr-4 py-1.5 text-sm w-64 focus:ring-1 focus:ring-primary-container" placeholder="Search filings, dates..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-[#455f88] active:scale-95 duration-200 flex items-center gap-1">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-[#455f88] active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant/20">
+<img alt="User Profile Avatar" data-alt="professional headshot of a female financial consultant in a modern office environment with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvf1kxYK8Y7C86xxvfkejAeZqFWcBkUfYONiLcnqkA8uk869mdy-h40Ldhc1hcCqF2407QqJKPecCcESiRnSqbe_MSVn_k07mwdU0oONjDUEwTTY3GO3dFViuMbpzymnnqC0qkOaVlAnyunBfUO2nWBsVt_cV4GboM8GfJ90uVkTgMuqQOmhuUfutLnYOBzkIuWV9nhPAOdn-2yUBDM1JD8mhV5U3FQCXD7XRm91IQ4njBfcUoEbcKaB-ds1Ankc8paVYrpLYm0w"/>
+</div>
+</div>
+</header>
+<div class="pt-20 px-8 pb-12">
+<!-- Breadcrumbs & Editorial Header -->
+<div class="mb-10">
+<span class="label-md text-primary font-bold tracking-widest uppercase text-[0.65rem] mb-2 block">Governance Framework</span>
+<div class="flex justify-between items-end">
+<h2 class="text-4xl font-extrabold text-on-surface tracking-tight">Compliance Calendar</h2>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest border border-outline-variant/15 text-on-surface rounded-md text-sm font-semibold hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+                            Filters
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-on-primary rounded-md text-sm font-bold shadow-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                            Export Calendar
+                        </button>
+</div>
+</div>
+</div>
+<!-- Bento Layout Container -->
+<div class="grid grid-cols-12 gap-8 items-start">
+<!-- Left: Calendar Canvas (Col 8) -->
+<div class="col-span-8 space-y-6">
+<div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10 shadow-sm">
+<!-- Calendar Header -->
+<div class="flex justify-between items-center mb-8">
+<div class="flex items-center gap-4">
+<h3 class="text-xl font-bold text-on-surface">October 2023</h3>
+<div class="flex gap-1">
+<button class="p-1 hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-xl" data-icon="chevron_left">chevron_left</span></button>
+<button class="p-1 hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-xl" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+<div class="flex bg-surface-container-low p-1 rounded-lg">
+<button class="px-4 py-1.5 text-xs font-bold rounded-md bg-surface-container-lowest text-primary shadow-sm">Month</button>
+<button class="px-4 py-1.5 text-xs font-medium text-outline">Week</button>
+<button class="px-4 py-1.5 text-xs font-medium text-outline">Agenda</button>
+</div>
+</div>
+<!-- Calendar Grid -->
+<div class="grid grid-cols-7 gap-px bg-outline-variant/10 border border-outline-variant/10 rounded-lg overflow-hidden">
+<!-- Days Header -->
+<div class="bg-surface-container-low py-3 text-center"><span class="label-md text-outline font-bold text-[0.7rem] uppercase">Mon</span></div>
+<div class="bg-surface-container-low py-3 text-center"><span class="label-md text-outline font-bold text-[0.7rem] uppercase">Tue</span></div>
+<div class="bg-surface-container-low py-3 text-center"><span class="label-md text-outline font-bold text-[0.7rem] uppercase">Wed</span></div>
+<div class="bg-surface-container-low py-3 text-center"><span class="label-md text-outline font-bold text-[0.7rem] uppercase">Thu</span></div>
+<div class="bg-surface-container-low py-3 text-center"><span class="label-md text-outline font-bold text-[0.7rem] uppercase">Fri</span></div>
+<div class="bg-surface-container-low py-3 text-center"><span class="label-md text-outline font-bold text-[0.7rem] uppercase">Sat</span></div>
+<div class="bg-surface-container-low py-3 text-center"><span class="label-md text-outline font-bold text-[0.7rem] uppercase">Sun</span></div>
+<!-- Calendar Rows (Simplified placeholder for visual) -->
+<!-- Row 1 -->
+<div class="bg-surface-container-lowest min-h-[110px] p-2 opacity-30 text-xs font-medium">25</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 opacity-30 text-xs font-medium">26</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 opacity-30 text-xs font-medium">27</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 opacity-30 text-xs font-medium">28</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 opacity-30 text-xs font-medium">29</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 opacity-30 text-xs font-medium">30</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">1</div>
+<!-- Row 2 -->
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">2</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">3</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">4</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary relative">
+                                5
+                                <div class="mt-2 space-y-1">
+<div class="bg-secondary-container/40 text-[0.65rem] p-1 rounded border-l-2 border-secondary text-on-secondary-container truncate">Board Meeting</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">6</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">7</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">8</div>
+<!-- Row 3 (Active Selection Row) -->
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">9</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">10</div>
+<div class="bg-surface-container-low min-h-[110px] p-2 text-xs font-extrabold text-on-surface ring-2 ring-primary ring-inset relative">
+                                11
+                                <span class="absolute top-2 right-2 w-1.5 h-1.5 bg-error rounded-full"></span>
+<div class="mt-2 space-y-1">
+<div class="bg-error-container/20 text-[0.65rem] p-1 rounded border-l-2 border-error text-error truncate">GST GSTR-1</div>
+<div class="bg-primary-container/30 text-[0.65rem] p-1 rounded border-l-2 border-primary text-primary truncate">TDS Deposit</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">12</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">13</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">14</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">15</div>
+<!-- Row 4 -->
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">16</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">17</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">18</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">19</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">20</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">21</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">22</div>
+<!-- Row 5 (Big MCA Deadlines) -->
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">23</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">24</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">25</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">26</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">27</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary">28</div>
+<div class="bg-surface-container-lowest min-h-[110px] p-2 text-xs font-bold text-primary relative">
+                                29
+                                <div class="mt-2 space-y-1">
+<div class="bg-tertiary-container/40 text-[0.65rem] p-1 rounded border-l-2 border-tertiary text-on-tertiary-container truncate">MCA AOC-4</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Daily Detail & Priority List (Col 4) -->
+<div class="col-span-4 space-y-6 sticky top-20">
+<!-- Day Detail Card -->
+<div class="bg-surface-container rounded-xl p-6 border border-outline-variant/15">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h4 class="text-xs font-bold text-primary uppercase tracking-widest mb-1">Schedule For</h4>
+<h3 class="text-2xl font-extrabold text-on-surface">Oct 11, 2023</h3>
+</div>
+<div class="h-12 w-12 bg-surface-container-lowest rounded-lg flex flex-col items-center justify-center border border-outline-variant/10">
+<span class="text-primary font-black text-xl leading-none">11</span>
+<span class="text-[0.6rem] uppercase font-bold text-outline">Wed</span>
+</div>
+</div>
+<!-- Task Priority List -->
+<div class="space-y-4">
+<!-- High Priority Task -->
+<div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm border border-l-4 border-l-error border-outline-variant/10">
+<div class="flex justify-between items-start mb-2">
+<span class="px-2 py-0.5 rounded-full bg-error-container/20 text-error text-[0.6rem] font-black uppercase">Critical</span>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="more_vert">more_vert</span>
+</div>
+<h5 class="text-sm font-bold text-on-surface mb-1">GSTR-1 Monthly Return</h5>
+<p class="text-[0.7rem] text-on-surface-variant leading-relaxed mb-3">Ensure B2B invoices are uploaded and matched before 11:59 PM.</p>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="h-5 w-5 rounded-full bg-surface-container flex items-center justify-center text-[0.5rem] font-bold border border-outline-variant/20">AK</div>
+<span class="text-[0.7rem] font-medium text-on-surface-variant">Anjali K.</span>
+</div>
+<span class="text-[0.65rem] font-semibold text-outline">Due: 23:59</span>
+</div>
+</div>
+<!-- Medium Priority Task -->
+<div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm border border-l-4 border-l-primary border-outline-variant/10">
+<div class="flex justify-between items-start mb-2">
+<span class="px-2 py-0.5 rounded-full bg-primary-container/40 text-primary text-[0.6rem] font-black uppercase">Standard</span>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="more_vert">more_vert</span>
+</div>
+<h5 class="text-sm font-bold text-on-surface mb-1">TDS Deposit - Sept</h5>
+<p class="text-[0.7rem] text-on-surface-variant leading-relaxed mb-3">Verify challan 281 details for salary and vendor payments.</p>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="h-5 w-5 rounded-full bg-surface-container flex items-center justify-center text-[0.5rem] font-bold border border-outline-variant/20 text-tertiary">RV</div>
+<span class="text-[0.7rem] font-medium text-on-surface-variant">Rahul V.</span>
+</div>
+<span class="text-[0.65rem] font-semibold text-outline">Due: 18:00</span>
+</div>
+</div>
+</div>
+<!-- Quick Summary -->
+<div class="mt-8 pt-6 border-t border-outline-variant/20">
+<h4 class="text-[0.65rem] font-bold text-outline uppercase tracking-wider mb-4">Category Filters</h4>
+<div class="flex flex-wrap gap-2">
+<label class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-low rounded-full border border-outline-variant/10 cursor-pointer hover:bg-surface-container-high transition-colors">
+<input checked="" class="w-3 h-3 rounded-full text-primary focus:ring-primary border-outline-variant/30" type="checkbox"/>
+<span class="text-[0.7rem] font-bold text-on-surface-variant">MCA</span>
+</label>
+<label class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-low rounded-full border border-outline-variant/10 cursor-pointer hover:bg-surface-container-high transition-colors">
+<input checked="" class="w-3 h-3 rounded-full text-primary focus:ring-primary border-outline-variant/30" type="checkbox"/>
+<span class="text-[0.7rem] font-bold text-on-surface-variant">GST</span>
+</label>
+<label class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-low rounded-full border border-outline-variant/10 cursor-pointer hover:bg-surface-container-high transition-colors">
+<input checked="" class="w-3 h-3 rounded-full text-primary focus:ring-primary border-outline-variant/30" type="checkbox"/>
+<span class="text-[0.7rem] font-bold text-on-surface-variant">Income Tax</span>
+</label>
+<label class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-low rounded-full border border-outline-variant/10 cursor-pointer hover:bg-surface-container-high transition-colors">
+<input class="w-3 h-3 rounded-full text-primary focus:ring-primary border-outline-variant/30" type="checkbox"/>
+<span class="text-[0.7rem] font-bold text-on-surface-variant">PF/ESI</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Upcoming Critical Card -->
+<div class="bg-surface-dim rounded-xl p-5 border border-outline-variant/15 flex gap-4 items-center">
+<div class="h-10 w-10 bg-tertiary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="event_upcoming">event_upcoming</span>
+</div>
+<div>
+<p class="text-[0.6rem] font-bold text-tertiary uppercase tracking-wider">Next Major Filing</p>
+<h5 class="text-sm font-extrabold text-on-surface">MGT-7 Annual Return</h5>
+<p class="text-[0.65rem] text-on-surface-variant">22 days remaining • Oct 29</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button - Only on relevant task context -->
+<button class="fixed bottom-8 right-8 h-14 w-14 rounded-full bg-primary text-on-primary shadow-xl flex items-center justify-center active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</body></html>

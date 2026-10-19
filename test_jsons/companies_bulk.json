@@ -1,0 +1,28 @@
+﻿{
+  "companies": [
+    {
+      "name": "PseudoCorp Pvt Ltd",
+      "type": "Pvt Ltd",
+      "industry": "Software",
+      "employeeCount": 45,
+      "turnover": 12000000,
+      "state": "Karnataka"
+    },
+    {
+      "name": "Beta Industries LLP",
+      "type": "LLP",
+      "industry": "Manufacturing",
+      "employeeCount": 120,
+      "turnover": 54000000,
+      "state": "Maharashtra"
+    },
+    {
+      "name": "Gamma Labs India",
+      "type": "Partnership",
+      "industry": "Biotech",
+      "employeeCount": 30,
+      "turnover": 8000000,
+      "state": "Telangana"
+    }
+  ]
+}

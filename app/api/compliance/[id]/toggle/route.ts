@@ -2,7 +2,8 @@ import { NextResponse } from "next/server"
 import prisma from "@/lib/prisma"
 import { getSessionFromCookies } from "@/lib/auth"
 
-export async function PATCH(_request: Request, { params }: { params: { id: string } }) {
+export async function PATCH(request: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const session = await getSessionFromCookies()
   if (!session || session.role !== "ADMIN") {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 })

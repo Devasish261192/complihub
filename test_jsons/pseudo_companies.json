@@ -1,0 +1,25 @@
+﻿{
+  "compliances": [
+    {
+      "title": "PseudoCorp GST Return",
+      "category": "Tax",
+      "frequency": "monthly",
+      "rules": { "turnover": ">=1000000" },
+      "applicableLaw": "GST"
+    },
+    {
+      "title": "Beta Industries EPF",
+      "category": "Labour",
+      "frequency": "monthly",
+      "rules": { "employeeCount": ">=20" },
+      "applicableLaw": "EPF"
+    },
+    {
+      "title": "Gamma Labs ROC Annual Return",
+      "category": "Corporate",
+      "frequency": "yearly",
+      "rules": { "industry": "any" },
+      "applicableLaw": "Companies Act"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server"
+﻿import { NextResponse } from "next/server"
 import prisma from "@/lib/prisma"
 import { getSessionFromCookies } from "@/lib/auth"
 
@@ -30,22 +30,29 @@ export async function POST(request: Request) {
 
     const frequency = normalizeFrequency(item.frequency) as any
 
-    const compliance = await prisma.compliance.upsert({
+    const existing = await prisma.compliance.findFirst({
       where: { title: item.title },
-      update: {
-        description: item.description ?? null,
-        frequency: frequency,
-        applicableLaw: item.applicableLaw ?? item.category,
-        categoryId: category.id,
-      },
-      create: {
-        title: item.title,
-        description: item.description ?? null,
-        frequency: frequency,
-        applicableLaw: item.applicableLaw ?? item.category,
-        categoryId: category.id,
-      },
     })
+
+    const compliance = existing
+      ? await prisma.compliance.update({
+          where: { id: existing.id },
+          data: {
+            description: item.description ?? null,
+            frequency: frequency,
+            applicableLaw: item.applicableLaw ?? item.category,
+            categoryId: category.id,
+          },
+        })
+      : await prisma.compliance.create({
+          data: {
+            title: item.title,
+            description: item.description ?? null,
+            frequency: frequency,
+            applicableLaw: item.applicableLaw ?? item.category,
+            categoryId: category.id,
+          },
+        })
 
     await prisma.complianceRule.upsert({
       where: { complianceId: compliance.id },

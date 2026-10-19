@@ -16,7 +16,7 @@ function redirect(url: string, req: NextRequest) {
   return NextResponse.redirect(new URL(url, req.url))
 }
 
-export function middleware(req: NextRequest) {
+export default function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl
   const session = parseSession(req)
 

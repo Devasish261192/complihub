@@ -54,9 +54,11 @@ model User {
 
   companyId String?
   roleId    String
+  department String?
 
   company   Company? @relation(fields: [companyId], references: [id])
   role      Role     @relation(fields: [roleId], references: [id])
+  tasks     Task[]
 }
 
 model ComplianceCategory {
@@ -108,9 +110,16 @@ model Task {
   id                   String      @id @default(uuid())
   assignedComplianceId String
   dueDate              DateTime?
+  completedAt          DateTime?
   status               TaskStatus  @default(pending)
   remarks              String?
+  assigneeName         String?
+  assigneeRole         String?
+  department           String?
   createdAt            DateTime    @default(now())
+
+  assigneeId           String?
+  assignee             User?       @relation(fields: [assigneeId], references: [id])
 
   assignedCompliance   AssignedCompliance @relation(fields: [assignedComplianceId], references: [id])
 }

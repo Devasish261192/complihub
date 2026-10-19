@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tasks &amp; Documents | The Sovereign Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800;900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#752121",
+              "background": "#f7fafc",
+              "surface-bright": "#f7fafc",
+              "surface-container-lowest": "#ffffff",
+              "inverse-surface": "#0b0f10",
+              "tertiary-fixed": "#e3dbfd",
+              "error-container": "#fe8983",
+              "primary-dim": "#39537c",
+              "on-primary-fixed-variant": "#425c85",
+              "surface-container-low": "#eff4f7",
+              "tertiary-dim": "#554f6b",
+              "on-primary-container": "#38527b",
+              "on-secondary-fixed-variant": "#515c6f",
+              "on-tertiary-fixed-variant": "#5c5672",
+              "error": "#9f403d",
+              "outline": "#707d82",
+              "tertiary-fixed-dim": "#d5cdee",
+              "primary-container": "#d6e3ff",
+              "outline-variant": "#a7b4ba",
+              "secondary-dim": "#495467",
+              "secondary-container": "#d8e3fa",
+              "inverse-primary": "#b3cdfd",
+              "on-background": "#283439",
+              "primary": "#455f88",
+              "surface-dim": "#ccdde4",
+              "inverse-on-surface": "#9a9d9f",
+              "error-dim": "#4e0309",
+              "on-error": "#fff7f6",
+              "surface-container-high": "#dfeaef",
+              "on-tertiary-container": "#524c68",
+              "surface-tint": "#455f88",
+              "secondary-fixed": "#d8e3fa",
+              "surface": "#f7fafc",
+              "tertiary-container": "#e3dbfd",
+              "surface-container": "#e7eff3",
+              "on-secondary-container": "#475265",
+              "on-surface": "#283439",
+              "on-surface-variant": "#546166",
+              "secondary": "#546073",
+              "secondary-fixed-dim": "#cad5ec",
+              "on-primary": "#f6f7ff",
+              "surface-container-highest": "#d7e5eb",
+              "primary-fixed-dim": "#bfd5ff",
+              "on-secondary-fixed": "#354052",
+              "primary-fixed": "#d6e3ff",
+              "on-secondary": "#f8f8ff",
+              "on-primary-fixed": "#254067",
+              "on-tertiary-fixed": "#3f3a54",
+              "on-tertiary": "#fcf7ff",
+              "tertiary": "#615b77",
+              "surface-variant": "#d7e5eb"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .glass-header {
+            background: rgba(247, 250, 252, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 z-50 bg-[#eff4f7] dark:bg-[#1a202c] flex flex-col p-4 space-y-2">
+<div class="mb-8 px-2 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-on-primary" data-icon="domain">domain</span>
+</div>
+<div>
+<h2 class="text-xl font-black text-[#455f88] dark:text-[#a3bffa] tracking-tight">Sovereign Ledger</h2>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Compliance Portal</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-[#546073] dark:text-[#cbd5e0] hover:bg-[#e7eff3]/50 dark:hover:bg-[#2d3748]/50 hover:translate-x-1 transition-transform duration-200 font-['Manrope'] font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#546073] dark:text-[#cbd5e0] hover:bg-[#e7eff3]/50 dark:hover:bg-[#2d3748]/50 hover:translate-x-1 transition-transform duration-200 font-['Manrope'] font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+                Calendar
+            </a>
+<!-- Active Tab: Tasks -->
+<a class="flex items-center gap-3 px-3 py-2 bg-[#e7eff3] dark:bg-[#2d3748] text-[#455f88] dark:text-[#a3bffa] font-bold rounded-lg hover:translate-x-1 transition-transform duration-200 font-['Manrope'] text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="assignment" style="font-variation-settings: 'FILL' 1;">assignment</span>
+                Tasks
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#546073] dark:text-[#cbd5e0] hover:bg-[#e7eff3]/50 dark:hover:bg-[#2d3748]/50 hover:translate-x-1 transition-transform duration-200 font-['Manrope'] font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+                Entity Profile
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#546073] dark:text-[#cbd5e0] hover:bg-[#e7eff3]/50 dark:hover:bg-[#2d3748]/50 hover:translate-x-1 transition-transform duration-200 font-['Manrope'] font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+                Reports
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#546073] dark:text-[#cbd5e0] hover:bg-[#e7eff3]/50 dark:hover:bg-[#2d3748]/50 hover:translate-x-1 transition-transform duration-200 font-['Manrope'] font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="pt-4 mt-4 border-t border-outline-variant/10">
+<button class="w-full bg-gradient-to-br from-primary to-primary-dim text-on-primary font-bold py-3 rounded-md shadow-lg active:scale-95 transition-all text-sm mb-6">
+                File New Return
+            </button>
+<a class="flex items-center gap-3 px-3 py-2 text-[#546073] dark:text-[#cbd5e0] hover:bg-[#e7eff3]/50 font-['Manrope'] font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#546073] dark:text-[#cbd5e0] hover:bg-[#e7eff3]/50 font-['Manrope'] font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-64 z-40 glass-header border-b border-[#a7b4ba]/15 px-8 py-4 flex justify-between items-center">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-lg" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-on-surface-variant/50" placeholder="Search compliance tasks..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="flex items-center gap-2 text-primary font-['Manrope'] font-semibold text-sm hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-xl" data-icon="filter_list">filter_list</span>
+                    Filter
+                </button>
+<div class="h-6 w-px bg-outline-variant/20 mx-2"></div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="User Profile" data-alt="Close-up professional headshot of a businessman in a light blue shirt, clean-cut with soft studio lighting against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSX5Ud0zwecxoSsZpBie84MUyFBKkJFfYCpF6bzknovbVUJhEanbrTzn3lBJHGLcwa_CFsBvyb8xPZGcmBn5yw5bFz9QCfJ3VpPf0SXSnu_PUxQZ3fA1COauOb5LTKvsa2C8eauKhgbyqMyFvMDGMWTR7qQ9g8PWP-OOAc9y60xNBFobJb0IbU-khHRgy3L-n9lxb9zWZIEzi7NzHtpgXlpL1Y_LDEuLxZcAITpd-WszW2dAIxIqgY-yoDGgwxnc4c8KnABFp57g"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<section class="pt-24 px-8 pb-12">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-10">
+<div>
+<span class="label-md text-primary font-bold tracking-[0.1rem] uppercase text-[10px] mb-2 block">Compliance Operations</span>
+<h1 class="text-3xl font-extrabold text-on-surface tracking-tight">Tasks &amp; Documents</h1>
+</div>
+<button class="flex items-center gap-2 bg-gradient-to-br from-primary to-primary-dim text-on-primary px-6 py-2.5 rounded-md font-bold shadow-xl shadow-primary/10 hover:shadow-primary/20 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="add_task">add_task</span>
+                    Assign New Task
+                </button>
+</div>
+<!-- Bento Stats Summary -->
+<div class="grid grid-cols-12 gap-6 mb-10">
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary-container rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="pending_actions">pending_actions</span>
+</div>
+<span class="text-xs font-bold text-error">+2 Due Today</span>
+</div>
+<h3 class="text-on-surface-variant font-medium text-sm mb-1">Active Filings</h3>
+<p class="text-2xl font-black text-on-surface">14 Pending</p>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container rounded-xl p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary-container rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="upload_file">upload_file</span>
+</div>
+<span class="text-xs font-bold text-primary">82% Verified</span>
+</div>
+<h3 class="text-on-surface-variant font-medium text-sm mb-1">Document Vault</h3>
+<p class="text-2xl font-black text-on-surface">128 Files</p>
+</div>
+<div class="col-span-12 md:col-span-4 bg-primary text-on-primary rounded-xl p-6 shadow-inner">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary-dim rounded-lg">
+<span class="material-symbols-outlined text-on-primary" data-icon="verified">verified</span>
+</div>
+<span class="text-xs font-bold text-on-primary/70">Past 30 days</span>
+</div>
+<h3 class="text-on-primary/80 font-medium text-sm mb-1">Success Rate</h3>
+<p class="text-2xl font-black">99.4%</p>
+</div>
+</div>
+<!-- Table Section -->
+<div class="bg-surface-container-low rounded-2xl overflow-hidden">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center bg-surface-container-lowest/50">
+<h2 class="font-headline font-bold text-lg text-on-surface">Operational Ledger</h2>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container rounded-lg text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="sort_by_alpha">sort_by_alpha</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-lg text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low/50">
+<tr>
+<th class="px-6 py-4 label-md text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Task Name</th>
+<th class="px-6 py-4 label-md text-[10px] font-bold text-on-surface-variant uppercase tracking-widest text-center">Status</th>
+<th class="px-6 py-4 label-md text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Due Date</th>
+<th class="px-6 py-4 label-md text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Assignee</th>
+<th class="px-6 py-4 label-md text-[10px] font-bold text-on-surface-variant uppercase tracking-widest text-right">Documents</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Row 1 -->
+<tr class="group hover:bg-surface-container transition-colors cursor-pointer">
+<td class="px-6 py-5">
+<div>
+<p class="font-headline font-bold text-on-surface text-sm">Prepare Directors Report</p>
+<p class="text-xs text-on-surface-variant mt-0.5">Section 134 compliance review</p>
+</div>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-tertiary-container text-on-tertiary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                        In Progress
+                                    </span>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-medium text-on-surface">Oct 24, 2023</p>
+<p class="text-[10px] text-error font-bold mt-0.5">2 Days Left</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img alt="Ananya Sharma" class="w-6 h-6 rounded-full border border-outline-variant/20" data-alt="Close-up portrait of a woman with long dark hair, wearing a professional blazer, soft natural lighting from a window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2DHC2cQSawSnRKN1vrmb3HbHC38nyxC48e30olh2vyHwxDDxoChQ282S6tRQkgAIRhuV6xLlY8W93skI-wZTZt73uiqLWP9Q-r7JbLsYDyf3CmJejcb9-LBofhQ--Ommvxw4BnvzxRWvGk68HAVHnLdBovNbfmzJZ0LaQxWNXjzWMPqcWYAVqdP1OH4xXBO_1Gd6kq7x6UtiT7TdDqzGlnNhVTyti57oy_a4cK3CSlMPatv0SsWQ0TziHvXdC16tZ53rvBbL8Mw"/>
+<span class="text-xs font-semibold text-on-surface">Ananya S.</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-2 hover:bg-surface-container-high rounded-full text-primary transition-colors inline-flex relative">
+<span class="material-symbols-outlined" data-icon="attach_file">attach_file</span>
+<span class="absolute top-1 right-1 bg-primary text-on-primary text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center">3</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-surface-container transition-colors cursor-pointer">
+<td class="px-6 py-5">
+<div>
+<p class="font-headline font-bold text-on-surface text-sm">Upload AOC-4 Documents</p>
+<p class="text-xs text-on-surface-variant mt-0.5">Financial Statement filing FY23</p>
+</div>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-surface-container-high text-primary font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                        Pending
+                                    </span>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-medium text-on-surface">Oct 30, 2023</p>
+<p class="text-[10px] text-on-surface-variant mt-0.5">Next Week</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center text-[10px] font-bold text-on-secondary-container border border-outline-variant/20">RK</div>
+<span class="text-xs font-semibold text-on-surface">Rahul K.</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-2 hover:bg-surface-container-high rounded-full text-on-surface-variant/40 transition-colors inline-flex">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-surface-container transition-colors cursor-pointer">
+<td class="px-6 py-5">
+<div>
+<p class="font-headline font-bold text-on-surface text-sm">GST Annual Reconciliation</p>
+<p class="text-xs text-on-surface-variant mt-0.5">GSTR-9 and 9C audits</p>
+</div>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-secondary-container text-on-secondary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                                        Completed
+                                    </span>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-medium text-on-surface text-on-surface-variant/60">Oct 15, 2023</p>
+<p class="text-[10px] text-primary font-bold mt-0.5">Done Early</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img alt="Vikram Mehta" class="w-6 h-6 rounded-full border border-outline-variant/20" data-alt="Professional portrait of a middle-aged man with short hair and glasses, wearing a sharp grey suit against a solid blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPaLLstzn3dmfIPa14wq2jNsP9MVFXKqzrf7t_wfgylWVVbRs0C6qpdBIYbdg-Ne5R3FnjsirZJmXSpMFf8fIFKIlcnQBvWcTWTIS3ybFtErVD_VIYNmBqPKFkhe-0nWl6DUvqT62k-naZ1qNRJOJ0eBuOjRHiGIJSNYHvRF9pjgcKyV-8wqabLkv1uU6VS-HrOBWNN9ciwdYOyFoCNY3yN9M7CnPhDnUfD5ORw-PBjxzmXDOAnmmbAY2I1EuONWSBNRMyIyPA_Q"/>
+<span class="text-xs font-semibold text-on-surface">Vikram M.</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-2 hover:bg-surface-container-high rounded-full text-primary transition-colors inline-flex relative">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="absolute top-1 right-1 bg-primary text-on-primary text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center">12</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-surface-container transition-colors cursor-pointer">
+<td class="px-6 py-5">
+<div>
+<p class="font-headline font-bold text-on-surface text-sm">Board Meeting Minutes</p>
+<p class="text-xs text-on-surface-variant mt-0.5">Q3 statutory board recording</p>
+</div>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-tertiary-container text-on-tertiary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                        In Progress
+                                    </span>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-medium text-on-surface">Nov 05, 2023</p>
+<p class="text-[10px] text-on-surface-variant mt-0.5">Standard Cycle</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img alt="Sanya Iyer" class="w-6 h-6 rounded-full border border-outline-variant/20" data-alt="Woman in professional attire, looking confident, soft warm lighting, office background in shallow focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8IvVYQzTVzyW5EvDEUIORDSzvG2yc8m1UT8qqqflScEajiidJJbaTSX9G-PslFO9ft6DsotIJ14dFeClPaR9vM5C_pkSLK2zN4I5rMil7pnXeyTaIPthTKyRirOfqNG1fFSln9R-gB4fFUymwr2XcVqRyNRW8TqbZsPl-uoPzYoGdevrPe9aorMmlGjO3PsUejHNPDsFww8JXCVwgDFGTSC6i64plxdBj09qaVYLjPSU0fiSc035kkvb-5AI3mKYLgm8_f4v5vg"/>
+<span class="text-xs font-semibold text-on-surface">Sanya I.</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-2 hover:bg-surface-container-high rounded-full text-primary transition-colors inline-flex relative">
+<span class="material-symbols-outlined" data-icon="attach_file">attach_file</span>
+<span class="absolute top-1 right-1 bg-primary text-on-primary text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center">1</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-surface-container-lowest/50 border-t border-outline-variant/10 flex justify-between items-center text-xs">
+<p class="text-on-surface-variant font-medium">Showing <span class="text-on-surface">1-4</span> of 24 tasks</p>
+<div class="flex gap-4">
+<button class="flex items-center gap-1 text-on-surface-variant/40 cursor-not-allowed">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+                            Prev
+                        </button>
+<button class="flex items-center gap-1 text-primary font-bold hover:opacity-70 transition-opacity">
+                            Next
+                            <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-error-container": "#752121",
+            "background": "#f7fafc",
+            "surface-bright": "#f7fafc",
+            "surface-container-lowest": "#ffffff",
+            "inverse-surface": "#0b0f10",
+            "tertiary-fixed": "#e3dbfd",
+            "error-container": "#fe8983",
+            "primary-dim": "#39537c",
+            "on-primary-fixed-variant": "#425c85",
+            "surface-container-low": "#eff4f7",
+            "tertiary-dim": "#554f6b",
+            "on-primary-container": "#38527b",
+            "on-secondary-fixed-variant": "#515c6f",
+            "on-tertiary-fixed-variant": "#5c5672",
+            "error": "#9f403d",
+            "outline": "#707d82",
+            "tertiary-fixed-dim": "#d5cdee",
+            "primary-container": "#d6e3ff",
+            "outline-variant": "#a7b4ba",
+            "secondary-dim": "#495467",
+            "secondary-container": "#d8e3fa",
+            "inverse-primary": "#b3cdfd",
+            "on-background": "#283439",
+            "primary": "#455f88",
+            "surface-dim": "#ccdde4",
+            "inverse-on-surface": "#9a9d9f",
+            "error-dim": "#4e0309",
+            "on-error": "#fff7f6",
+            "surface-container-high": "#dfeaef",
+            "on-tertiary-container": "#524c68",
+            "surface-tint": "#455f88",
+            "secondary-fixed": "#d8e3fa",
+            "surface": "#f7fafc",
+            "tertiary-container": "#e3dbfd",
+            "surface-container": "#e7eff3",
+            "on-secondary-container": "#475265",
+            "on-surface": "#283439",
+            "on-surface-variant": "#546166",
+            "secondary": "#546073",
+            "secondary-fixed-dim": "#cad5ec",
+            "on-primary": "#f6f7ff",
+            "surface-container-highest": "#d7e5eb",
+            "primary-fixed-dim": "#bfd5ff",
+            "on-secondary-fixed": "#354052",
+            "primary-fixed": "#d6e3ff",
+            "on-secondary": "#f8f8ff",
+            "on-primary-fixed": "#254067",
+            "on-tertiary-fixed": "#3f3a54",
+            "on-tertiary": "#fcf7ff",
+            "tertiary": "#615b77",
+            "surface-variant": "#d7e5eb"
+          },
+          fontFamily: {
+            "headline": ["Manrope"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    .glass-header {
+      background: rgba(247, 250, 252, 0.8);
+      backdrop-filter: blur(12px);
+    }
+    .cta-gradient {
+      background: linear-gradient(135deg, #455f88 0%, #39537c 100%);
+    }
+    .ghost-border {
+      outline: 1px solid rgba(167, 180, 186, 0.15);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Side Navigation Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 z-50 bg-[#eff4f7] dark:bg-[#1a202c] flex flex-col h-full p-4 space-y-2">
+<div class="mb-8 px-2 flex items-center space-x-3">
+<div class="w-10 h-10 rounded-lg cta-gradient flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+</div>
+<div>
+<h1 class="text-xl font-black text-[#455f88] dark:text-[#a3bffa] leading-none">Sovereign Ledger</h1>
+<p class="text-[10px] font-bold uppercase tracking-wider text-outline">Compliance Portal</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-3 py-2 text-[#546073] hover:translate-x-1 transition-transform duration-200 rounded-lg font-medium text-sm" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+        Dashboard
+      </a>
+<a class="flex items-center px-3 py-2 text-[#546073] hover:translate-x-1 transition-transform duration-200 rounded-lg font-medium text-sm" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="calendar_month">calendar_month</span>
+        Calendar
+      </a>
+<a class="flex items-center px-3 py-2 text-[#546073] hover:translate-x-1 transition-transform duration-200 rounded-lg font-medium text-sm" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="assignment">assignment</span>
+        Tasks
+      </a>
+<!-- Active Tab: Entity Profile -->
+<a class="flex items-center px-3 py-2 bg-[#e7eff3] dark:bg-[#2d3748] text-[#455f88] dark:text-[#a3bffa] font-bold rounded-lg text-sm shadow-sm" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="domain" style="font-variation-settings: 'FILL' 1;">domain</span>
+        Entity Profile
+      </a>
+<a class="flex items-center px-3 py-2 text-[#546073] hover:translate-x-1 transition-transform duration-200 rounded-lg font-medium text-sm" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="description">description</span>
+        Reports
+      </a>
+<a class="flex items-center px-3 py-2 text-[#546073] hover:translate-x-1 transition-transform duration-200 rounded-lg font-medium text-sm" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+        Settings
+      </a>
+</nav>
+<div class="pt-4 mt-auto border-t border-outline-variant/10 space-y-1">
+<button class="w-full cta-gradient text-on-primary py-2.5 rounded-md font-semibold text-sm mb-4 active:opacity-80 transition-all flex items-center justify-center space-x-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+<span>File New Return</span>
+</button>
+<a class="flex items-center px-3 py-2 text-[#546073] hover:translate-x-1 transition-transform duration-200 font-medium text-sm" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="contact_support">contact_support</span>
+        Support
+      </a>
+<a class="flex items-center px-3 py-2 text-[#546073] hover:translate-x-1 transition-transform duration-200 font-medium text-sm" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="logout">logout</span>
+        Logout
+      </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- Top Bar -->
+<header class="fixed top-0 right-0 left-64 z-40 bg-[#f7fafc]/80 backdrop-blur-md border-b border-[#a7b4ba]/15 px-8 py-3 flex justify-between items-center">
+<div class="flex items-center space-x-4">
+<h2 class="text-lg font-bold text-[#455f88] tracking-tight">Entity Profile</h2>
+<div class="h-4 w-[1px] bg-outline-variant/30"></div>
+<div class="flex items-center space-x-2 bg-surface-container-low px-3 py-1.5 rounded-full border border-outline-variant/10">
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest">Active</span>
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<div class="relative group">
+<span class="material-symbols-outlined text-[#546073] cursor-pointer hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<span class="material-symbols-outlined text-[#546073] cursor-pointer hover:text-primary transition-colors" data-icon="help">help</span>
+<div class="flex items-center space-x-3 pl-4 border-l border-outline-variant/20">
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface leading-none">Arjun Mehta</p>
+<p class="text-[10px] text-outline-variant font-medium">Compliance Officer</p>
+</div>
+<img alt="User Profile Avatar" class="w-9 h-9 rounded-full object-cover border border-primary/20" data-alt="professional headshot of an Indian corporate executive with a friendly expression in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzUZhRZ-J6EfA-13ct5a_352TMawsjAsw_H3C1QNwIjpaxZzk3kal9ZWCAKcDFlcFAFDz2EoxdZ4yGGZzlKi-Wx93H7URk1vh7zH9XJaMKMFaWgHkWfho0Ih1g9Dddv3b83-qSVpiBpV3p4KeJPZNWR-v2v1nMJGrwc6tgK6WWCyJazNe7RWclxbagekCWkxHaDUy2i7SBBSk7p5kOVrR9UCccvZndO0LyDZAHrSutoGFPHV-2Sa_uhFS2rLF5r53fU9VdAtGR7w"/>
+</div>
+</div>
+</header>
+<div class="mt-20 px-8 pb-12">
+<!-- Editorial Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
+<div class="max-w-2xl">
+<p class="text-[0.75rem] font-bold text-primary uppercase tracking-[0.15em] mb-2">Corporate Identity</p>
+<h1 class="text-4xl font-extrabold text-on-surface tracking-tight mb-4">Sovereign Tech Solutions Pvt Ltd</h1>
+<p class="text-secondary text-lg leading-relaxed font-body">
+            A premier enterprise technology firm providing integrated regulatory compliance and financial engineering solutions across the Indian subcontinent.
+          </p>
+</div>
+<div class="flex space-x-3">
+<button class="px-5 py-2.5 bg-surface-container text-primary font-bold text-sm rounded-md ghost-border flex items-center space-x-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="share">share</span>
+<span>Share Profile</span>
+</button>
+<button class="px-5 py-2.5 cta-gradient text-on-primary font-bold text-sm rounded-md flex items-center space-x-2 transition-all active:scale-95 shadow-xl shadow-primary/10">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+<span>Update Details</span>
+</button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Key Identifiers Card -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-lowest rounded-xl p-8 ghost-border">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xl font-bold text-on-surface">Registration Identifiers</h3>
+<span class="material-symbols-outlined text-outline-variant" data-icon="verified_user">verified_user</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12">
+<div class="space-y-1">
+<label class="text-[0.65rem] font-bold text-outline-variant uppercase tracking-widest">CIN (Corporate ID Number)</label>
+<div class="flex items-center justify-between py-2 border-b border-surface-container">
+<span class="font-mono text-sm font-semibold tracking-wider">U72200MH2021PTC355442</span>
+<span class="material-symbols-outlined text-[16px] text-primary cursor-pointer" data-icon="content_copy">content_copy</span>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-[0.65rem] font-bold text-outline-variant uppercase tracking-widest">PAN (Permanent Account Number)</label>
+<div class="flex items-center justify-between py-2 border-b border-surface-container">
+<span class="font-mono text-sm font-semibold tracking-wider">AAICS8332M</span>
+<span class="material-symbols-outlined text-[16px] text-primary cursor-pointer" data-icon="content_copy">content_copy</span>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-[0.65rem] font-bold text-outline-variant uppercase tracking-widest">TAN (Tax Deduction Account)</label>
+<div class="flex items-center justify-between py-2 border-b border-surface-container">
+<span class="font-mono text-sm font-semibold tracking-wider">MUMS88231E</span>
+<span class="material-symbols-outlined text-[16px] text-primary cursor-pointer" data-icon="content_copy">content_copy</span>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-[0.65rem] font-bold text-outline-variant uppercase tracking-widest">GSTIN</label>
+<div class="flex items-center justify-between py-2 border-b border-surface-container">
+<span class="font-mono text-sm font-semibold tracking-wider">27AAICS8332M1Z5</span>
+<span class="material-symbols-outlined text-[16px] text-primary cursor-pointer" data-icon="content_copy">content_copy</span>
+</div>
+</div>
+</div>
+<div class="mt-12 bg-surface-container-low rounded-lg p-6 flex items-start space-x-4">
+<div class="w-10 h-10 rounded bg-white flex items-center justify-center flex-shrink-0 ghost-border">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+</div>
+<div>
+<label class="text-[0.65rem] font-bold text-outline-variant uppercase tracking-widest mb-1 block">Registered Office Address</label>
+<p class="text-on-surface font-medium leading-relaxed">
+                Unit 402, 4th Floor, Sovereign Tower, BKC G-Block, Bandra East, Mumbai, Maharashtra - 400051, India
+              </p>
+</div>
+</div>
+</div>
+<!-- Directors Panel -->
+<div class="col-span-12 lg:col-span-5 bg-surface-container-low rounded-xl p-8 flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold text-on-surface">Board of Directors</h3>
+<span class="text-[10px] font-black bg-primary/10 text-primary px-2 py-0.5 rounded uppercase">Active Board</span>
+</div>
+<div class="space-y-4 flex-1">
+<div class="bg-surface-container-lowest p-4 rounded-lg ghost-border flex items-center group hover:bg-white transition-colors">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-4 border-2 border-primary/10 group-hover:border-primary/40 transition-all">
+<img alt="Director Avatar" class="w-full h-full object-cover" data-alt="professional portrait of a senior Indian businessman in a formal suit against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGkIoqLGtH3MkHjSwqDslQTPTeiVigKHGdFKgLIS_lTCSaNp_sqDsSlYETcT9N35A77xCrdOXVVB1DscNCZTWKxM1JkEocHubfuOOOhuRb3mmPprfu6qAZ7Fi3rDkRBcep-EY_9f_g26YxnPZgrwgfzIa5PrvHeQOPy1TS-4Qts2fUpz8OcfGJXRgN25D8WtLILLjckJecBPDmS-eWCqtZ1etcaXkSwairZxl66T25UdeD_RVs1FQBSo1qm9qaDX9IlYtVrD6uAA"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface text-sm">Vikram Sethi</h4>
+<p class="text-[11px] text-outline-variant font-mono">DIN: 08422319</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-lg ghost-border flex items-center group hover:bg-white transition-colors">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-4 border-2 border-primary/10 group-hover:border-primary/40 transition-all">
+<img alt="Director Avatar" class="w-full h-full object-cover" data-alt="professional portrait of an Indian businesswoman in a corporate environment with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWer1DC-seuRxQmpQ9qDTMvIbTfgKESlBKfk-c9_ekQCauLHh-ui7dyVEJsR8MkQd21MMOYJO5_AKYa1DBFUJUC_uE6di3bpH_yx0BrkQOTDLYz4va_yYkwwNH1YkpWpbQa1df-FkuniTZ6S5_5nx8ot59nzJDkZJjbU7REMd1M6Xe4GKj1pE2KmcSlMlLsbv0jYlx5eyR-8V7E5uR18pvM0oeCGZrF1Sfx0wsxzI-tjiFHW8BW7572jzk5ULqZ3cIAvhtDRM6Fg"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface text-sm">Ananya Rao</h4>
+<p class="text-[11px] text-outline-variant font-mono">DIN: 09115432</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-lg ghost-border flex items-center group hover:bg-white transition-colors">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-4 border-2 border-primary/10 group-hover:border-primary/40 transition-all">
+<img alt="Director Avatar" class="w-full h-full object-cover" data-alt="mature Indian professional male executive in a corporate setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoTdspfCAjkSn-eAjVLml95FatJT551IFEixS8yfp2zM9YbP-IkgX_pPp3mInnX_Zw8lXAaZPnskj_6IOnI1X8Mm9fuD2P-x9yRL8hXObkHJH9E-45CDCRsBHuKHARbrdnyvY8_t05e_jMokMVJfcHJJyKEJTVajVTYkdZgKLBGqeJ_8Tq6zPmWhihGeRRMMRzINwVNwWk7FsuhSMIoUq1zDo2ufIoCxWRy-PKuXs8EyAEUCWOb-jJlisl4zLyqCIG-GukpypYmA"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface text-sm">Rajesh Khanna</h4>
+<p class="text-[11px] text-outline-variant font-mono">DIN: 07221098</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+</div>
+</div>
+<button class="w-full mt-6 py-3 bg-transparent border border-outline-variant/30 text-secondary font-bold text-xs uppercase tracking-widest rounded hover:bg-surface-container transition-colors">
+            View Appointment History
+          </button>
+</div>
+<!-- Statutory Registers Section -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl p-8 ghost-border">
+<div class="flex items-center justify-between mb-8 border-b border-surface-container pb-4">
+<h3 class="text-xl font-bold text-on-surface">Statutory Registers</h3>
+<div class="flex space-x-2">
+<span class="material-symbols-outlined text-outline-variant cursor-pointer p-1" data-icon="search">search</span>
+<span class="material-symbols-outlined text-outline-variant cursor-pointer p-1" data-icon="filter_list">filter_list</span>
+</div>
+</div>
+<div class="space-y-0">
+<!-- Table Header -->
+<div class="grid grid-cols-12 px-4 py-3 bg-surface-container-low rounded-t-lg">
+<div class="col-span-5 text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-[0.1rem]">Register Name</div>
+<div class="col-span-4 text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-[0.1rem]">Last Updated</div>
+<div class="col-span-3 text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-[0.1rem] text-right">Action</div>
+</div>
+<!-- Table Rows -->
+<div class="divide-y divide-surface-container">
+<div class="grid grid-cols-12 px-4 py-4 hover:bg-surface-container-low/50 transition-colors group">
+<div class="col-span-5 flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary/60" data-icon="group">group</span>
+<span class="text-sm font-semibold text-on-surface">Register of Members</span>
+</div>
+<div class="col-span-4 flex items-center">
+<span class="text-xs text-secondary">12 Oct 2023, 04:30 PM</span>
+</div>
+<div class="col-span-3 flex justify-end">
+<button class="text-primary text-[11px] font-bold uppercase tracking-wider hover:underline">Download PDF</button>
+</div>
+</div>
+<div class="grid grid-cols-12 px-4 py-4 hover:bg-surface-container-low/50 transition-colors group">
+<div class="col-span-5 flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary/60" data-icon="badge">badge</span>
+<span class="text-sm font-semibold text-on-surface">Register of Directors</span>
+</div>
+<div class="col-span-4 flex items-center">
+<span class="text-xs text-secondary">05 Jan 2024, 11:15 AM</span>
+</div>
+<div class="col-span-3 flex justify-end">
+<button class="text-primary text-[11px] font-bold uppercase tracking-wider hover:underline">Download PDF</button>
+</div>
+</div>
+<div class="grid grid-cols-12 px-4 py-4 hover:bg-surface-container-low/50 transition-colors group">
+<div class="col-span-5 flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary/60" data-icon="account_balance">account_balance</span>
+<span class="text-sm font-semibold text-on-surface">Register of Charges</span>
+</div>
+<div class="col-span-4 flex items-center">
+<span class="text-xs text-secondary">28 Dec 2023, 02:45 PM</span>
+</div>
+<div class="col-span-3 flex justify-end">
+<button class="text-primary text-[11px] font-bold uppercase tracking-wider hover:underline">Download PDF</button>
+</div>
+</div>
+<div class="grid grid-cols-12 px-4 py-4 hover:bg-surface-container-low/50 transition-colors group">
+<div class="col-span-5 flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary/60" data-icon="receipt_long">receipt_long</span>
+<span class="text-sm font-semibold text-on-surface">Register of Contracts</span>
+</div>
+<div class="col-span-4 flex items-center">
+<span class="text-xs text-secondary">15 Feb 2024, 09:20 AM</span>
+</div>
+<div class="col-span-3 flex justify-end">
+<button class="text-primary text-[11px] font-bold uppercase tracking-wider hover:underline">Download PDF</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Key Corporate Documents -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest rounded-xl p-8 ghost-border flex flex-col">
+<h3 class="text-xl font-bold text-on-surface mb-8">Corporate Documents</h3>
+<div class="space-y-6 flex-1">
+<div class="flex items-center space-x-4 p-4 rounded-lg bg-surface-container-low border border-primary/5 hover:border-primary/20 transition-all cursor-pointer">
+<div class="w-10 h-10 rounded bg-[#d6e3ff] flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="article">article</span>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold text-on-surface">MOA</h4>
+<p class="text-[10px] text-secondary">Memorandum of Association</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="download">download</span>
+</div>
+<div class="flex items-center space-x-4 p-4 rounded-lg bg-surface-container-low border border-primary/5 hover:border-primary/20 transition-all cursor-pointer">
+<div class="w-10 h-10 rounded bg-[#d6e3ff] flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold text-on-surface">AOA</h4>
+<p class="text-[10px] text-secondary">Articles of Association</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="download">download</span>
+</div>
+<div class="flex items-center space-x-4 p-4 rounded-lg bg-surface-container-low border border-primary/5 hover:border-primary/20 transition-all cursor-pointer">
+<div class="w-10 h-10 rounded bg-[#d6e3ff] flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="history_edu">history_edu</span>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold text-on-surface">Incorporation Certificate</h4>
+<p class="text-[10px] text-secondary">Form INC-11</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="download">download</span>
+</div>
+<div class="flex items-center space-x-4 p-4 rounded-lg bg-surface-container-low border border-primary/5 hover:border-primary/20 transition-all cursor-pointer">
+<div class="w-10 h-10 rounded bg-[#d6e3ff] flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="assignment_ind">assignment_ind</span>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold text-on-surface">Pan &amp; Tan Cards</h4>
+<p class="text-[10px] text-secondary">Identity Proofs</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="download">download</span>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-surface-container">
+<button class="w-full py-2.5 bg-primary/5 text-primary text-xs font-bold rounded-md hover:bg-primary/10 transition-colors flex items-center justify-center space-x-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="upload_file">upload_file</span>
+<span>Upload New Document</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Compliance Health Strip (Footer Content) -->
+<div class="mt-12 bg-on-background text-on-primary rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between shadow-2xl shadow-on-background/20 relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="w-full h-full" style="background-image: radial-gradient(circle at 2px 2px, #fff 1px, transparent 0); background-size: 40px 40px;"></div>
+</div>
+<div class="z-10 text-center md:text-left mb-6 md:mb-0">
+<h4 class="text-xl font-bold mb-1">Compliance Score: 98%</h4>
+<p class="text-primary-fixed-dim/80 text-sm max-w-md">Your entity is currently in high compliance standing. Next mandatory ROC filing is due in 45 days.</p>
+</div>
+<div class="z-10 flex space-x-4">
+<div class="flex flex-col items-center px-6 border-r border-white/10">
+<span class="text-2xl font-black">0</span>
+<span class="text-[10px] uppercase font-bold text-primary-fixed-dim">Open Defaults</span>
+</div>
+<div class="flex flex-col items-center px-6 border-r border-white/10">
+<span class="text-2xl font-black">12</span>
+<span class="text-[10px] uppercase font-bold text-primary-fixed-dim">Clean Filings</span>
+</div>
+<div class="flex flex-col items-center px-6">
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-bold text-sm hover:scale-105 transition-transform active:scale-95">
+              Run Audit
+            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

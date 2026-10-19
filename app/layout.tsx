@@ -1,38 +1,57 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Sidebar from "@/components/Sidebar";
+import Header from "@/components/Header";
+import { getSessionFromCookies } from "@/lib/auth";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Compliance Portal",
+  title: "Sovereign Ledger | Compliance Portal",
   description: "Compliance management system",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getSessionFromCookies();
+
   return (
     <html lang="en">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${manrope.variable} ${inter.variable} antialiased bg-[#f7fafc] text-[#283439]`}
       >
-
-        <Navbar />
-
-        {children}
-
+        {session ? (
+          <div className="flex">
+            <Sidebar />
+            <div className="flex-1 ml-64 flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-1 mt-16 p-8">
+                {children}
+              </main>
+            </div>
+          </div>
+        ) : (
+          <>
+            <Navbar />
+            {children}
+          </>
+        )}
       </body>
     </html>
   );

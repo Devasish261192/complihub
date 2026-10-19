@@ -1,8 +1,15 @@
-'use server'
+﻿"use server"
 
+import prisma from "@/lib/prisma"
+import { getSessionFromCookies } from "@/lib/auth"
 import { revalidatePath } from "next/cache"
 
 export async function createCompanyAction(formData: FormData) {
+  const session = await getSessionFromCookies()
+  if (session?.role !== "ADMIN") {
+    throw new Error("Unauthorized")
+  }
+
   const payload = {
     name: String(formData.get("name") || "").trim(),
     type: String(formData.get("type") || "").trim() || null,
@@ -12,16 +19,11 @@ export async function createCompanyAction(formData: FormData) {
     state: String(formData.get("state") || "").trim() || null,
   }
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/company`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  })
-
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}))
-    throw new Error(err.error || "Failed to create company")
+  if (!payload.name) {
+    throw new Error("Company name is required")
   }
+
+  await prisma.company.create({ data: payload })
 
   revalidatePath("/admin/companies")
 }
