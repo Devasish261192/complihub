@@ -22,7 +22,7 @@ export default function LandingPage() {
           </h1>
           
           <p className="mt-6 text-lg md:text-xl text-secondary max-w-2xl mx-auto font-medium leading-relaxed">
-            The sovereign operating system for Indian regulatory compliance. Track GST, ROC, Tax, and Labour filings with cryptographic certainty and automated oversight.
+            The enterprise operating system for Indian regulatory compliance. Track GST, ROC, Tax, and Labour filings with cryptographic certainty and automated oversight.
           </p>
 
           <LandingClient />
@@ -143,7 +143,7 @@ export default function LandingPage() {
              <span className="font-extrabold text-on-surface text-sm">Complihub</span>
           </div>
           <p className="text-xs font-medium text-secondary">
-            &copy; {new Date().getFullYear()} Sovereign Tech Solutions Pvt Ltd. All rights reserved.
+            &copy; {new Date().getFullYear()} Complihub Technologies Pvt Ltd. All rights reserved.
           </p>
         </div>
       </footer>

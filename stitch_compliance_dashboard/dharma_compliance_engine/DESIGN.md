@@ -1,4 +1,4 @@
-# Design System Document: The Sovereign Ledger
+# Design System Document: The Complihub
 
 ## 1. Overview & Creative North Star
 

@@ -41,3 +41,10 @@ yarn-error.log*
 next-env.d.ts
 
 /app/generated/prisma
+*.tar.gz
+*.txt
+find_region.js
+check_users.js
+test_db_vm.js
+seed_admin.js
+
