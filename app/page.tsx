@@ -26,7 +26,7 @@ export default function LandingPage() {
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4" id="book-demo">
             <button className="w-full sm:w-auto px-8 py-4 bg-primary-gradient text-white font-bold text-sm rounded-lg shadow-xl shadow-primary/20 hover:shadow-2xl hover:-translate-y-0.5 transition-all active:scale-95 flex items-center justify-center space-x-2">
-              <span>Deploy Sovereign Ledger</span>
+              <span>Deploy Complihub</span>
               <span className="material-symbols-outlined text-sm">arrow_forward</span>
             </button>
             <button className="w-full sm:w-auto px-8 py-4 bg-surface-container-lowest text-primary border border-outline-variant/20 font-bold text-sm rounded-lg shadow-sm hover:bg-white transition-all active:scale-95 flex items-center justify-center space-x-2">
@@ -52,7 +52,7 @@ export default function LandingPage() {
               Regulatory Infrastructure, <br/> Reimagined.
             </h2>
             <p className="text-secondary text-lg">
-              Manual tracking leads to missed filings, severe penalties, and unnecessary legal exposure. Sovereign Ledger provides real-time visibility.
+              Manual tracking leads to missed filings, severe penalties, and unnecessary legal exposure. Complihub provides real-time visibility.
             </p>
           </div>
 
@@ -130,7 +130,7 @@ export default function LandingPage() {
           <div className="relative z-10">
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 font-['Manrope']">Ready to secure your compliance?</h2>
             <p className="text-[#a7b4ba] text-lg max-w-xl mx-auto mb-10">
-              Join leading Indian enterprises that trust Sovereign Ledger for their statutory governance and regulatory filings.
+              Join leading Indian enterprises that trust Complihub for their statutory governance and regulatory filings.
             </p>
             <Link 
               href="/login" 
@@ -148,7 +148,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between">
           <div className="flex items-center gap-2 font-['Manrope'] mb-4 md:mb-0">
              <span className="material-symbols-outlined text-primary text-xl">account_balance</span>
-             <span className="font-extrabold text-on-surface text-sm">Sovereign Ledger</span>
+             <span className="font-extrabold text-on-surface text-sm">Complihub</span>
           </div>
           <p className="text-xs font-medium text-secondary">
             &copy; {new Date().getFullYear()} Sovereign Tech Solutions Pvt Ltd. All rights reserved.
@@ -159,3 +159,4 @@ export default function LandingPage() {
     </main>
   )
 }
+

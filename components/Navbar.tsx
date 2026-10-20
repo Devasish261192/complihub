@@ -20,7 +20,7 @@ export default async function Navbar() {
             <span className="material-symbols-outlined text-[20px]">account_balance</span>
           </div>
           <div>
-            <span className="block text-lg font-extrabold text-on-surface tracking-tight leading-tight">Sovereign Ledger</span>
+            <span className="block text-lg font-extrabold text-on-surface tracking-tight leading-tight">Complihub</span>
             <span className="block text-[10px] text-primary font-bold uppercase tracking-widest">Compliance Portal</span>
           </div>
         </Link>
@@ -74,3 +74,4 @@ export default async function Navbar() {
     </div>
   )
 }
+

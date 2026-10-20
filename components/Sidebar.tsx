@@ -16,7 +16,7 @@ export default function Sidebar() {
           <span className="material-symbols-outlined text-white" style={{ fontVariationSettings: "'FILL' 1" }}>account_balance</span>
         </div>
         <div>
-          <h1 className="text-xl font-black text-[#455f88] dark:text-[#a3bffa] tracking-tight leading-none brand-font">Sovereign Ledger</h1>
+          <h1 className="text-xl font-black text-[#455f88] dark:text-[#a3bffa] tracking-tight leading-none brand-font">Complihub</h1>
           <p className="text-[10px] font-bold uppercase tracking-widest text-secondary mt-1">Compliance Portal</p>
         </div>
       </div>
@@ -65,3 +65,4 @@ export default function Sidebar() {
     </aside>
   );
 }
+

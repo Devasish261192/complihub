@@ -17,7 +17,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Sovereign Ledger | Compliance Portal",
+  title: "Complihub | Compliance Portal",
   description: "Compliance management system",
 };
 
