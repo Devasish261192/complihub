@@ -1,4 +1,5 @@
 import Link from "next/link"
+import LandingClient from "@/components/LandingClient"
 
 export default function LandingPage() {
   return (
@@ -24,16 +25,7 @@ export default function LandingPage() {
             The sovereign operating system for Indian regulatory compliance. Track GST, ROC, Tax, and Labour filings with cryptographic certainty and automated oversight.
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4" id="book-demo">
-            <button className="w-full sm:w-auto px-8 py-4 bg-primary-gradient text-white font-bold text-sm rounded-lg shadow-xl shadow-primary/20 hover:shadow-2xl hover:-translate-y-0.5 transition-all active:scale-95 flex items-center justify-center space-x-2">
-              <span>Deploy Complihub</span>
-              <span className="material-symbols-outlined text-sm">arrow_forward</span>
-            </button>
-            <button className="w-full sm:w-auto px-8 py-4 bg-surface-container-lowest text-primary border border-outline-variant/20 font-bold text-sm rounded-lg shadow-sm hover:bg-white transition-all active:scale-95 flex items-center justify-center space-x-2">
-              <span className="material-symbols-outlined text-sm">play_circle</span>
-              <span>View Platform Demo</span>
-            </button>
-          </div>
+          <LandingClient />
           
           <div className="mt-16 pt-10 border-t border-outline-variant/10 flex flex-wrap justify-center gap-x-12 gap-y-6 opacity-60">
             <div className="flex items-center space-x-2"><span className="material-symbols-outlined text-2xl">account_balance</span><span className="font-bold text-sm tracking-wider">MCA</span></div>
